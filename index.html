@@ -261,9 +261,9 @@
       grid-template-columns: 1.4fr 0.9fr 0.7fr 0.7fr 0.6fr 0.7fr 0.6fr 0.6fr 0.6fr 1.2fr 0.9fr 1fr;
     }
     .table-wrapper { display: block; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-      .table-inner { min-width: 950px; max-height: 380px; overflow-y: auto; overflow-x: visible; scrollbar-width: thin; overscroll-behavior: contain; }
-      .table-body { display: block; }
-      .table-header-row { position: sticky; top: 0; z-index: 5; }
+    .table-inner { min-width: 950px; max-height: 380px; overflow-y: auto; overflow-x: visible; scrollbar-width: thin; overscroll-behavior: contain; }
+    .table-body { display: block; }
+    .table-header-row { position: sticky; top: 0; z-index: 5; }
     .table-row {
       grid-template-columns: 1.4fr 0.9fr 0.7fr 0.7fr 0.6fr 0.7fr 0.6fr 0.6fr 0.6fr 1.2fr 0.9fr 1fr;
       border-bottom: 1px solid rgba(31,41,55,0.8);
@@ -292,36 +292,12 @@
       display: inline-flex;
       justify-content: center;
     }
-    .badge-profit-positive {
-      background: rgba(34,197,94,0.18);
-      color: #4ade80;
-      border: 1px solid rgba(34,197,94,0.65);
-    }
-    .badge-profit-negative {
-      background: rgba(248,113,113,0.16);
-      color: #fca5a5;
-      border: 1px solid rgba(248,113,113,0.65);
-    }
-    .badge-profit-even {
-      background: rgba(148,163,184,0.18);
-      color: var(--muted);
-      border: 1px solid rgba(148,163,184,0.7);
-    }
-    .badge-itm-yes {
-      background: rgba(34,197,94,0.22);
-      color: #4ade80;
-      border: 1px solid rgba(34,197,94,0.8);
-    }
-    .badge-itm-no {
-      background: rgba(31,41,55,0.96);
-      color: var(--muted);
-      border: 1px solid rgba(31,41,55,0.9);
-    }
-    .badge-percentile {
-      background: rgba(56,189,248,0.2);
-      color: #7dd3fc;
-      border: 1px solid rgba(56,189,248,0.7);
-    }
+    .badge-profit-positive { background: rgba(34,197,94,0.18); color: #4ade80; border: 1px solid rgba(34,197,94,0.65); }
+    .badge-profit-negative { background: rgba(248,113,113,0.16); color: #fca5a5; border: 1px solid rgba(248,113,113,0.65); }
+    .badge-profit-even { background: rgba(148,163,184,0.18); color: var(--muted); border: 1px solid rgba(148,163,184,0.7); }
+    .badge-itm-yes { background: rgba(34,197,94,0.22); color: #4ade80; border: 1px solid rgba(34,197,94,0.8); }
+    .badge-itm-no { background: rgba(31,41,55,0.96); color: var(--muted); border: 1px solid rgba(31,41,55,0.9); }
+    .badge-percentile { background: rgba(56,189,248,0.2); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.7); }
 
     .summary-grid, .summary-grid-3 {
       display: grid;
@@ -335,7 +311,6 @@
       .summary-grid, .summary-grid-3, .summary-grid-2 { grid-template-columns: minmax(0, 1fr) !important; }
     }
     .table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .table-scroll .stats-table { min-width: 360px; }
     @media (max-width: 560px) {
       .stats-table { font-size: 11px; }
       .stats-table th, .stats-table td { padding: 6px 6px; }
@@ -367,10 +342,7 @@
       align-items: baseline;
       gap: 10px;
     }
-    .summary-card-main strong {
-      font-size: 18px;
-      font-variant-numeric: tabular-nums;
-    }
+    .summary-card-main strong { font-size: 18px; font-variant-numeric: tabular-nums; }
     .summary-label { font-size: 11px; color: var(--muted); }
     .summary-mini { font-size: 11px; color: var(--muted); display: flex; flex-direction: column; gap: 1px; }
     .summary-mini span.value { color: var(--text); font-variant-numeric: tabular-nums; }
@@ -463,6 +435,7 @@
     }
     .summary-note { font-size: 11px; color: var(--muted); margin-top: 4px; }
 
+    /* FIX: stats table fixed layout so both columns always visible */
     .stats-table {
       width: 100%;
       border-collapse: collapse;
@@ -470,7 +443,9 @@
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(31,41,55,0.95);
+      table-layout: fixed;
     }
+    .stats-table th:first-child, .stats-table td:first-child { width: 60%; word-break: break-word; }
     .stats-table th, .stats-table td {
       padding: 7px 9px;
       border-bottom: 1px solid rgba(31,41,55,0.9);
@@ -526,12 +501,7 @@
       flex-direction: column;
       gap: 7px;
     }
-    .note-viewer-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-    }
+    .note-viewer-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
     .note-viewer-title { font-size: 13px; color: var(--muted); }
     .note-viewer-body {
       font-size: 12px;
@@ -556,7 +526,6 @@
     }
 
     .hidden { display: none !important; }
-  
 
     @media (max-width: 700px) {
       body { padding: 8px; }
@@ -569,7 +538,6 @@
       .cell-notes { max-width: 180px; }
     }
 
-  
     .period-filter {
       display: flex;
       gap: 6px;
@@ -599,12 +567,7 @@
       padding: 12px 12px 8px;
       margin-bottom: 10px;
     }
-    .chart-title {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
+    .chart-title { font-size: 12px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
     .chart-svg-wrap {
       width: 100%;
       height: 190px;
@@ -641,7 +604,6 @@
       box-sizing: border-box;
     }
 
-
     /* iOS-safe custom modal */
     #ios-modal-overlay {
       display: none;
@@ -677,26 +639,7 @@
     .ios-modal-btn.confirm { background: var(--accent); color: #000; font-weight: 600; }
     .ios-modal-btn.confirm.danger { background: var(--accent-red); color: #fff; }
   </style>
-<style>
-        .gpt-cursor-tooltip {
-          position: fixed;
-          left: 0;
-          top: 0;
-          display: none;
-          pointer-events: none;
-          z-index: 1000000001;
-          padding: 4px 10px;
-          border-radius: 9999px;
-          background: rgba(37,99,235,0.93);
-          color: #fff;
-          font: 600 12px/1.25 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-          white-space: nowrap;
-          max-width: min(70vw, 520px);
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-      </style></head>
+</head>
 <body>
   <div class="app">
     <header>
@@ -712,9 +655,9 @@
         </div>
       </div>
       <div class="header-stats">
-        <div class="pill"><span id="header-label-1">Lejátszott versenyek összesen</span>: <strong><span id="header-total-games">4</span></strong></div>
-        <div class="pill"><span id="header-label-2">Összes profit</span>: <strong><span id="header-total-profit">1.25</span> $</strong></div>
-        <div class="pill"><span id="header-label-3">Összes ITM arány</span>: <strong><span id="header-itm-rate">75.0%</span></strong></div>
+        <div class="pill"><span id="header-label-1">Lejátszott versenyek összesen</span>: <strong><span id="header-total-games">0</span></strong></div>
+        <div class="pill"><span id="header-label-2">Összes profit</span>: <strong><span id="header-total-profit">0.00</span> $</strong></div>
+        <div class="pill"><span id="header-label-3">Összes ITM arány</span>: <strong><span id="header-itm-rate">0.0%</span></strong></div>
         <button class="secondary" id="btn-download-app" type="button" title="Letöltés PC-re (offline használat)" style="height:28px;">💾 Letöltés</button>
       </div>
     </header>
@@ -801,21 +744,21 @@
 
         <div class="table-wrapper">
           <div class="table-inner">
-          <div class="table-header-row">
-            <div>Név</div>
-            <div class="cell-center">Dátum</div>
-            <div class="cell-right">Költség</div>
-            <div class="cell-right">Nyeremény</div>
-            <div class="cell-right">Profit</div>
-            <div class="cell-center">ITM?</div>
-            <div class="cell-center">Típus</div>
-            <div class="cell-center">Mezőny%</div>
-            <div class="cell-center">Résztv.</div>
-            <div class="cell-center">Hely.</div>
-            <div>Megjegyzés</div>
-            <div class="cell-center">Műveletek</div>
-          </div>
-          <div class="table-body" id="table-body"><div class="table-row"><div>SNG $0.25 – 6-max</div><div class="cell-center">2026-05-24</div><div class="cell-right">0.25</div><div class="cell-right">1.00</div><div class="cell-right"><span class="badge-profit-positive">+0.75</span></div><div class="cell-center"><span class="badge-itm-yes">Pénzben</span></div><div class="cell-center">SNG</div><div class="cell-center"><span class="badge-percentile">0.0%</span></div><div class="cell-center">6</div><div class="cell-center">1</div><div class="cell-notes cell-notes-empty">-</div><div class="cell-center"><button class="action-btn edit" title="Szerkesztés">✏️</button><button class="action-btn delete" title="Törlés">🗑️</button></div></div><div class="table-row"><div>SNG $0.25 – 6-max</div><div class="cell-center">2026-05-24</div><div class="cell-right">0.25</div><div class="cell-right">1.00</div><div class="cell-right"><span class="badge-profit-positive">+0.75</span></div><div class="cell-center"><span class="badge-itm-yes">Pénzben</span></div><div class="cell-center">SNG</div><div class="cell-center"><span class="badge-percentile">0.0%</span></div><div class="cell-center">6</div><div class="cell-center">1</div><div class="cell-notes cell-notes-empty">-</div><div class="cell-center"><button class="action-btn edit" title="Szerkesztés">✏️</button><button class="action-btn delete" title="Törlés">🗑️</button></div></div><div class="table-row"><div>SNG $1.00 – 3-max</div><div class="cell-center">2026-05-06</div><div class="cell-right">1.00</div><div class="cell-right">1.00</div><div class="cell-right"><span class="badge-profit-even">0.00</span></div><div class="cell-center"><span class="badge-itm-yes">Pénzben</span></div><div class="cell-center">SNG</div><div class="cell-center"><span class="badge-percentile">0.0%</span></div><div class="cell-center">3</div><div class="cell-center">1</div><div class="cell-notes cell-notes-empty">-</div><div class="cell-center"><button class="action-btn edit" title="Szerkesztés">✏️</button><button class="action-btn delete" title="Törlés">🗑️</button></div></div><div class="table-row"><div>SNG $0.25 – 3-max</div><div class="cell-center">2026-04-27</div><div class="cell-right">0.25</div><div class="cell-right">0.00</div><div class="cell-right"><span class="badge-profit-negative">-0.25</span></div><div class="cell-center"><span class="badge-itm-no">Nem</span></div><div class="cell-center">SNG</div><div class="cell-center"><span class="badge-percentile">0.0%</span></div><div class="cell-center">3</div><div class="cell-center">1</div><div class="cell-notes cell-notes-empty">-</div><div class="cell-center"><button class="action-btn edit" title="Szerkesztés">✏️</button><button class="action-btn delete" title="Törlés">🗑️</button></div></div></div>
+            <div class="table-header-row">
+              <div>Név</div>
+              <div class="cell-center">Dátum</div>
+              <div class="cell-right">Költség</div>
+              <div class="cell-right">Nyeremény</div>
+              <div class="cell-right">Profit</div>
+              <div class="cell-center">ITM?</div>
+              <div class="cell-center">Típus</div>
+              <div class="cell-center">Mezőny%</div>
+              <div class="cell-center">Résztv.</div>
+              <div class="cell-center">Hely.</div>
+              <div>Megjegyzés</div>
+              <div class="cell-center">Műveletek</div>
+            </div>
+            <div class="table-body" id="table-body"></div>
           </div>
         </div>
       </section>
@@ -836,24 +779,24 @@
             <div class="summary-card-main">
               <div>
                 <div class="summary-label">Profit</div>
-                <strong id="room-profit">1.25 $</strong>
-                <div class="summary-label" style="font-size:11px;margin-top:2px;">Freebuy nélkül: <span id="room-profit-nofree">1.25 $</span></div>
+                <strong id="room-profit">0.00 $</strong>
+                <div class="summary-label" style="font-size:11px;margin-top:2px;">Freebuy nélkül: <span id="room-profit-nofree">0.00 $</span></div>
               </div>
               <div class="summary-mini">
                 <span>Lejátszott versenyek</span>
-                <span class="value" id="room-games">4</span>
+                <span class="value" id="room-games">0</span>
                 <span>ITM arány</span>
-                <span class="value" id="room-itm-rate">75.0%</span>
+                <span class="value" id="room-itm-rate">0.0%</span>
               </div>
             </div>
             <div class="summary-chip-row">
-              <span class="chip green" id="room-roi-chip">ROI: 71.4%</span>
-              <span class="chip blue" id="room-avg-percentile-chip">Átlagos mezőny%: 0.0%</span>
+              <span class="chip green" id="room-roi-chip">ROI: 0.0%</span>
+              <span class="chip blue" id="room-avg-percentile-chip">Átlagos mezőny%: -</span>
             </div>
             <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;padding:8px 10px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:10px;">
               <div style="display:flex;flex-direction:column;">
                 <span class="summary-label" style="font-size:11px;">💰 Jelenlegi egyenleg</span>
-                <strong id="room-balance" style="font-size:18px;color:#22c55e;">51.17 $</strong>
+                <strong id="room-balance" style="font-size:18px;color:#22c55e;">0.00 $</strong>
               </div>
               <button class="secondary" id="btn-edit-balance" type="button" style="font-size:11px;padding:5px 9px;">Szerk.</button>
             </div>
@@ -866,16 +809,16 @@
             <div class="summary-card-main">
               <div>
                 <div class="summary-label">💸 Befizetve összesen</div>
-                <strong id="room-cost">1.75 $</strong>
+                <strong id="room-cost">0.00 $</strong>
               </div>
               <div>
                 <div class="summary-label">🏆 Visszakapott összesen</div>
-                <strong id="room-prize">3.00 $</strong>
+                <strong id="room-prize">0.00 $</strong>
               </div>
             </div>
             <div class="summary-mini" style="margin-top:4px;">
               <span>Pénzbe érés (alkalmak száma)</span>
-              <span class="value" id="room-itm-count">3x</span>
+              <span class="value" id="room-itm-count">0x</span>
             </div>
           </div>
         </div>
@@ -886,8 +829,8 @@
           </div>
           <div class="sparkline" id="sparkline-room">
             <div class="sparkline-track"></div>
-            <div class="sparkline-needle" id="sparkline-room-needle" style="left: calc(73.8095% - 2px); background: rgb(69, 155, 118); box-shadow: rgb(69, 155, 118) 0px 0px 14px;"></div>
-            <div class="sparkline-text" id="sparkline-room-text">Pluszban vagy ebben a teremben (71.4% ROI)</div>
+            <div class="sparkline-needle" id="sparkline-room-needle"></div>
+            <div class="sparkline-text" id="sparkline-room-text">Még nincs elég adat</div>
           </div>
         </div>
       </section>
@@ -908,33 +851,33 @@
           </div>
           <div class="overview-hero">
             <div class="overview-hero-label">Összprofit</div>
-            <strong class="overview-hero-value" id="all-profit">1.25 $</strong>
-            <div class="summary-label" style="font-size:12px;margin-top:4px;">Freebuy nélkül: <span id="all-profit-nofree">1.25 $</span></div>
+            <strong class="overview-hero-value" id="all-profit">0.00 $</strong>
+            <div class="summary-label" style="font-size:12px;margin-top:4px;">Freebuy nélkül: <span id="all-profit-nofree">0.00 $</span></div>
             <div class="overview-hero-chips">
-              <span class="chip gold" id="all-roi-chip">ROI: 71.4%</span>
-              <span class="chip blue" id="all-avg-percentile-chip">Átlag mezőny%: 0.0%</span>
+              <span class="chip gold" id="all-roi-chip">ROI: 0.0%</span>
+              <span class="chip blue" id="all-avg-percentile-chip">Átlag mezőny%: -</span>
             </div>
           </div>
           <div class="overview-stat-grid">
             <div class="overview-stat">
               <div class="overview-stat-label">💸 Befizetve</div>
-              <div class="overview-stat-value" id="all-cost">1.75 $</div>
+              <div class="overview-stat-value" id="all-cost">0.00 $</div>
             </div>
             <div class="overview-stat">
               <div class="overview-stat-label">🏆 Visszakapott</div>
-              <div class="overview-stat-value" id="all-prize">3.00 $</div>
+              <div class="overview-stat-value" id="all-prize">0.00 $</div>
             </div>
             <div class="overview-stat">
               <div class="overview-stat-label">Versenyek</div>
-              <div class="overview-stat-value" id="all-games">4</div>
+              <div class="overview-stat-value" id="all-games">0</div>
             </div>
             <div class="overview-stat">
               <div class="overview-stat-label">Pénzbe érés</div>
-              <div class="overview-stat-value" id="all-itm-count">3x</div>
+              <div class="overview-stat-value" id="all-itm-count">0x</div>
             </div>
             <div class="overview-stat">
               <div class="overview-stat-label">ITM arány</div>
-              <div class="overview-stat-value" id="all-itm-rate">75.0%</div>
+              <div class="overview-stat-value" id="all-itm-rate">0.0%</div>
             </div>
           </div>
         </div>
@@ -947,8 +890,8 @@
         </div>
         <div class="sparkline" id="sparkline-all">
           <div class="sparkline-track"></div>
-          <div class="sparkline-needle" id="sparkline-all-needle" style="left: calc(73.8095% - 2px); background: rgb(69, 155, 118); box-shadow: rgb(69, 155, 118) 0px 0px 14px;"></div>
-          <div class="sparkline-text" id="sparkline-all-text">Pluszban vagy összesen (71.4% ROI)</div>
+          <div class="sparkline-needle" id="sparkline-all-needle"></div>
+          <div class="sparkline-text" id="sparkline-all-text">Még nincs elég adat</div>
         </div>
         <div class="summary-note">Itt látod a teljes mintád ROI-ját, függetlenül a termektől.</div>
       </div>
@@ -960,17 +903,19 @@
             <span class="summary-label">termenszintű</span>
           </div>
           <table class="stats-table">
-            <tbody><tr><th>Mutató</th><th>Érték</th></tr>
-            <tr><td>Lejátszott versenyek</td><td id="sum-888-games">0</td></tr>
-            <tr><td>Profit</td><td id="sum-888-profit">0.00 $</td></tr>
-            <tr><td>Profit (freebuy nélkül)</td><td id="sum-888-profit-nofree">0.00 $</td></tr>
-            <tr><td>ROI (freebuy nélkül)</td><td id="sum-888-roi">0.0%</td></tr>
-            <tr><td>ITM arány</td><td id="sum-888-itm">0.0%</td></tr>
-            <tr><td>Pénzbe érés</td><td id="sum-888-itm-count">0x</td></tr>
-            <tr><td>Összes költség</td><td id="sum-888-cost">0.00 $</td></tr>
-            <tr><td>Összes nyeremény</td><td id="sum-888-prize">0.00 $</td></tr>
-            <tr><td>Átlagos mezőny%</td><td id="sum-888-avg-percentile">-</td></tr>
-          </tbody></table>
+            <tbody>
+              <tr><th>Mutató</th><th>Érték</th></tr>
+              <tr><td>Lejátszott versenyek</td><td id="sum-888-games">0</td></tr>
+              <tr><td>Profit</td><td id="sum-888-profit">0.00 $</td></tr>
+              <tr><td>Profit (freebuy nélkül)</td><td id="sum-888-profit-nofree">0.00 $</td></tr>
+              <tr><td>ROI (freebuy nélkül)</td><td id="sum-888-roi">0.0%</td></tr>
+              <tr><td>ITM arány</td><td id="sum-888-itm">0.0%</td></tr>
+              <tr><td>Pénzbe érés</td><td id="sum-888-itm-count">0x</td></tr>
+              <tr><td>Összes költség</td><td id="sum-888-cost">0.00 $</td></tr>
+              <tr><td>Összes nyeremény</td><td id="sum-888-prize">0.00 $</td></tr>
+              <tr><td>Átlagos mezőny%</td><td id="sum-888-avg-percentile">-</td></tr>
+            </tbody>
+          </table>
         </div>
         <div class="summary-card">
           <div class="summary-card-header">
@@ -978,17 +923,19 @@
             <span class="summary-label">termenszintű</span>
           </div>
           <table class="stats-table">
-            <tbody><tr><th>Mutató</th><th>Érték</th></tr>
-            <tr><td>Lejátszott versenyek</td><td id="sum-gg-games">4</td></tr>
-            <tr><td>Profit</td><td id="sum-gg-profit">1.25 $</td></tr>
-            <tr><td>Profit (freebuy nélkül)</td><td id="sum-gg-profit-nofree">1.25 $</td></tr>
-            <tr><td>ROI (freebuy nélkül)</td><td id="sum-gg-roi">71.4%</td></tr>
-            <tr><td>ITM arány</td><td id="sum-gg-itm">75.0%</td></tr>
-            <tr><td>Pénzbe érés</td><td id="sum-gg-itm-count">3x</td></tr>
-            <tr><td>Összes költség</td><td id="sum-gg-cost">1.75 $</td></tr>
-            <tr><td>Összes nyeremény</td><td id="sum-gg-prize">3.00 $</td></tr>
-            <tr><td>Átlagos mezőny%</td><td id="sum-gg-avg-percentile">0.0%</td></tr>
-          </tbody></table>
+            <tbody>
+              <tr><th>Mutató</th><th>Érték</th></tr>
+              <tr><td>Lejátszott versenyek</td><td id="sum-gg-games">0</td></tr>
+              <tr><td>Profit</td><td id="sum-gg-profit">0.00 $</td></tr>
+              <tr><td>Profit (freebuy nélkül)</td><td id="sum-gg-profit-nofree">0.00 $</td></tr>
+              <tr><td>ROI (freebuy nélkül)</td><td id="sum-gg-roi">0.0%</td></tr>
+              <tr><td>ITM arány</td><td id="sum-gg-itm">0.0%</td></tr>
+              <tr><td>Pénzbe érés</td><td id="sum-gg-itm-count">0x</td></tr>
+              <tr><td>Összes költség</td><td id="sum-gg-cost">0.00 $</td></tr>
+              <tr><td>Összes nyeremény</td><td id="sum-gg-prize">0.00 $</td></tr>
+              <tr><td>Átlagos mezőny%</td><td id="sum-gg-avg-percentile">-</td></tr>
+            </tbody>
+          </table>
         </div>
         <div class="summary-card">
           <div class="summary-card-header">
@@ -996,17 +943,19 @@
             <span class="summary-label">888 + GG</span>
           </div>
           <table class="stats-table">
-            <tbody><tr><th>Mutató</th><th>Érték</th></tr>
-            <tr><td>Lejátszott versenyek</td><td id="sum-all-games">4</td></tr>
-            <tr><td>Profit</td><td id="sum-all-profit">1.25 $</td></tr>
-            <tr><td>Profit (freebuy nélkül)</td><td id="sum-all-profit-nofree">1.25 $</td></tr>
-            <tr><td>ROI (freebuy nélkül)</td><td id="sum-all-roi">71.4%</td></tr>
-            <tr><td>ITM arány</td><td id="sum-all-itm">75.0%</td></tr>
-            <tr><td>Pénzbe érés</td><td id="sum-all-itm-count">3x</td></tr>
-            <tr><td>Összes költség</td><td id="sum-all-cost">1.75 $</td></tr>
-            <tr><td>Összes nyeremény</td><td id="sum-all-prize">3.00 $</td></tr>
-            <tr><td>Átlagos mezőny%</td><td id="sum-all-avg-percentile">0.0%</td></tr>
-          </tbody></table>
+            <tbody>
+              <tr><th>Mutató</th><th>Érték</th></tr>
+              <tr><td>Lejátszott versenyek</td><td id="sum-all-games">0</td></tr>
+              <tr><td>Profit</td><td id="sum-all-profit">0.00 $</td></tr>
+              <tr><td>Profit (freebuy nélkül)</td><td id="sum-all-profit-nofree">0.00 $</td></tr>
+              <tr><td>ROI (freebuy nélkül)</td><td id="sum-all-roi">0.0%</td></tr>
+              <tr><td>ITM arány</td><td id="sum-all-itm">0.0%</td></tr>
+              <tr><td>Pénzbe érés</td><td id="sum-all-itm-count">0x</td></tr>
+              <tr><td>Összes költség</td><td id="sum-all-cost">0.00 $</td></tr>
+              <tr><td>Összes nyeremény</td><td id="sum-all-prize">0.00 $</td></tr>
+              <tr><td>Átlagos mezőny%</td><td id="sum-all-avg-percentile">-</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -1027,18 +976,18 @@
             <input type="date" id="period-from" style="background:#0f172a;color:#e5e7eb;border:1px solid #1f2937;border-radius:8px;padding:5px 8px;font-size:12px;min-width:0;flex:1 1 140px;">
             <input type="date" id="period-to" style="background:#0f172a;color:#e5e7eb;border:1px solid #1f2937;border-radius:8px;padding:5px 8px;font-size:12px;min-width:0;flex:1 1 140px;">
           </div>
-          <div class="summary-label" id="period-range-label" style="margin-bottom:4px;">2026-05-24 → 2026-05-24</div>
-          <div class="table-scroll">
-            <table class="stats-table">
-              <tbody><tr><th>Mutató</th><th>Érték</th></tr>
-              <tr><td>Versenyek</td><td id="period-games">2</td></tr>
-              <tr><td>Profit</td><td id="period-profit">1.50 $</td></tr>
-              <tr><td>ROI</td><td id="period-roi">300.0%</td></tr>
-              <tr><td>ITM arány</td><td id="period-itm">100.0%</td></tr>
-              <tr><td>Befizetve</td><td id="period-cost">0.50 $</td></tr>
-              <tr><td>Visszakapott</td><td id="period-prize">2.00 $</td></tr>
-            </tbody></table>
-          </div>
+          <div class="summary-label" id="period-range-label" style="margin-bottom:4px;">-</div>
+          <table class="stats-table">
+            <tbody>
+              <tr><th>Mutató</th><th>Érték</th></tr>
+              <tr><td>Versenyek</td><td id="period-games">0</td></tr>
+              <tr><td>Profit</td><td id="period-profit">0.00 $</td></tr>
+              <tr><td>ROI</td><td id="period-roi">0.0%</td></tr>
+              <tr><td>ITM arány</td><td id="period-itm">0.0%</td></tr>
+              <tr><td>Befizetve</td><td id="period-cost">0.00 $</td></tr>
+              <tr><td>Visszakapott</td><td id="period-prize">0.00 $</td></tr>
+            </tbody>
+          </table>
         </div>
         <div class="summary-card">
           <div class="summary-card-header">
@@ -1047,7 +996,9 @@
           </div>
           <div class="summary-label" style="margin-bottom:4px;">Típusonként (terem · forma · max · belépő)</div>
           <div class="table-scroll">
-            <table class="stats-table" id="tourney-type-table"><tbody><tr><th>Típus</th><th>Db</th><th>Profit</th><th>ROI</th><th>ITM%</th></tr></tbody><tr><td>GG · SNG $0.25 – 6-max · $0.25</td><td>2</td><td style="color:#22c55e;">1.50 $</td><td>300.0%</td><td>100.0%</td></tr><tr><td>GG · SNG $0.25 – 3-max · $0.25</td><td>1</td><td style="color:#ef4444;">-0.25 $</td><td>-100.0%</td><td>0.0%</td></tr><tr><td>GG · SNG $1.00 – 3-max · $1.00</td><td>1</td><td style="">0.00 $</td><td>0.0%</td><td>100.0%</td></tr></table>
+            <table class="stats-table" id="tourney-type-table">
+              <tbody><tr><th>Típus</th><th>Db</th><th>Profit</th><th>ROI</th><th>ITM%</th></tr></tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -1084,23 +1035,24 @@
       <div class="card-header">
         <div>
           <h2>✨ Új grafikonok</h2>
-          <small>Időszakonkénti (heti / havi) profit teremenként.</small>
+          <small>Kumulált profit időszakonként teremenként (napi / heti / havi).</small>
         </div>
       </div>
       <div class="period-filter">
+        <button class="period-btn" data-nperiod="day">Nap</button>
         <button class="period-btn active" data-nperiod="week">Hét</button>
         <button class="period-btn" data-nperiod="month">Hónap</button>
       </div>
       <div class="chart-block">
-        <div class="chart-title">888poker – időszaki profit</div>
+        <div class="chart-title">888poker – kumulált profit</div>
         <div id="nchart-888" class="chart-svg-wrap"></div>
       </div>
       <div class="chart-block">
-        <div class="chart-title">GGPoker – időszaki profit</div>
+        <div class="chart-title">GGPoker – kumulált profit</div>
         <div id="nchart-gg" class="chart-svg-wrap"></div>
       </div>
       <div class="chart-block">
-        <div class="chart-title">Összes terem – időszaki profit</div>
+        <div class="chart-title">Összes terem – kumulált profit</div>
         <div id="nchart-all" class="chart-svg-wrap"></div>
       </div>
 
@@ -1125,7 +1077,7 @@
         <div class="field"><label>Csoportosítás</label>
           <select id="cc-group">
             <option value="day">Nap</option>
-            <option value="week" selected="">Hét</option>
+            <option value="week" selected>Hét</option>
             <option value="month">Hónap</option>
             <option value="year">Év</option>
           </select>
@@ -1140,7 +1092,7 @@
         <div class="field"><label>Típus</label>
           <select id="cc-type">
             <option value="line">Vonal</option>
-            <option value="bar" selected="">Oszlop</option>
+            <option value="bar" selected>Oszlop</option>
           </select>
         </div>
         <div class="field"><label>Kezdő dátum</label>
@@ -1170,7 +1122,6 @@
     </div>
   </div>
 
-  <!-- iOS-safe modal overlay -->
   <div id="ios-modal-overlay">
     <div id="ios-modal-box">
       <p id="ios-modal-title"></p>
@@ -1181,21 +1132,15 @@
   </div>
 
   <script>
-
-    // iOS-safe replacements for confirm/alert/prompt
+    // ── iOS-safe modal helpers ──────────────────────────────────────────────
     function iosModal({ title='', message='', inputDefault=null, buttons=[] }) {
       const overlay = document.getElementById('ios-modal-overlay');
       document.getElementById('ios-modal-title').textContent = title;
       document.getElementById('ios-modal-msg').textContent = message;
       const inp = document.getElementById('ios-modal-input');
       const btnsEl = document.getElementById('ios-modal-btns');
-      if (inputDefault !== null) {
-        inp.value = inputDefault;
-        inp.classList.add('visible');
-      } else {
-        inp.value = '';
-        inp.classList.remove('visible');
-      }
+      inp.value = inputDefault ?? '';
+      inp.classList.toggle('visible', inputDefault !== null);
       btnsEl.innerHTML = '';
       buttons.forEach(btn => {
         const el = document.createElement('button');
@@ -1203,1147 +1148,782 @@
         el.textContent = btn.label;
         el.addEventListener('click', () => {
           overlay.classList.remove('open');
-          if (btn.action) btn.action(inp.value);
+          btn.action?.(inp.value);
         });
         btnsEl.appendChild(el);
       });
       overlay.classList.add('open');
       if (inputDefault !== null) setTimeout(() => inp.focus(), 50);
     }
-    function iosAlert(message, title='Értesítés') {
-      iosModal({ title, message, buttons: [{ label:'OK', style:'confirm', action:()=>{} }] });
-    }
-    function iosConfirm(message, onOk, title='Megerősítés', danger=false) {
-      iosModal({ title, message, buttons: [
-        { label:'Mégse', style:'cancel', action:()=>{} },
-        { label:'OK', style:'confirm'+(danger?' danger':''), action: onOk },
-      ]});
-    }
-    function iosPrompt(message, defaultVal, onOk, title='Adja meg') {
-      iosModal({ title, message, inputDefault: String(defaultVal ?? ''), buttons: [
-        { label:'Mégse', style:'cancel', action:()=>{} },
-        { label:'OK', style:'confirm', action: onOk },
-      ]});
-    }
+    const iosAlert   = (msg, title='Értesítés') => iosModal({ title, message: msg, buttons: [{ label:'OK', style:'confirm', action:()=>{} }] });
+    const iosConfirm = (msg, onOk, title='Megerősítés', danger=false) => iosModal({ title, message: msg, buttons: [
+      { label:'Mégse', style:'cancel', action:()=>{} },
+      { label:'OK', style:'confirm'+(danger?' danger':''), action: onOk },
+    ]});
+    const iosPrompt  = (msg, def, onOk, title='Adja meg') => iosModal({ title, message: msg, inputDefault: String(def ?? ''), buttons: [
+      { label:'Mégse', style:'cancel', action:()=>{} },
+      { label:'OK', style:'confirm', action: onOk },
+    ]});
 
+    // ── Presets ─────────────────────────────────────────────────────────────
     const PRESETS = {
-      'mtt-freebuy-888':    { label: 'MTT Freebuy (888) – $0',   name: '888 MTT Freebuy',  buyIn: '0',    players: '',  gameType: 'MTT' },
-      'freeroll-zilnic-888':{ label: 'Freeroll Zilnic (888) – $0',name: 'Freeroll Zilnic',  buyIn: '0',    players: '',  gameType: 'MTT' },
-      'sng010-3max':        { label: 'SNG $0.10 – 3-max',         name: 'SNG $0.10 – 3-max',buyIn: '0.10', players: '3', gameType: 'SNG' },
-      'sng025-3max':        { label: 'SNG $0.25 – 3-max',         name: 'SNG $0.25 – 3-max',buyIn: '0.25', players: '3', gameType: 'SNG' },
-      'sng025-6max':        { label: 'SNG $0.25 – 6-max',         name: 'SNG $0.25 – 6-max',buyIn: '0.25', players: '6', gameType: 'SNG' },
-      'sng1-3max':          { label: 'SNG $1.00 – 3-max',         name: 'SNG $1.00 – 3-max',buyIn: '1.00', players: '3', gameType: 'SNG' },
-      'sng1-6max':          { label: 'SNG $1.00 – 6-max',         name: 'SNG $1.00 – 6-max',buyIn: '1.00', players: '6', gameType: 'SNG' },
-      'mystery-freeroll-gg':{ label: 'Mystery Freeroll (GG) – $0',name: 'Mystery Freeroll', buyIn: '0',    players: '18',gameType: 'MTT' },
+      'mtt-freebuy-888':    { label:'MTT Freebuy (888) – $0',    name:'888 MTT Freebuy',  buyIn:'0',    players:'',  gameType:'MTT' },
+      'freeroll-zilnic-888':{ label:'Freeroll Zilnic (888) – $0', name:'Freeroll Zilnic',  buyIn:'0',    players:'',  gameType:'MTT' },
+      'sng010-3max':        { label:'SNG $0.10 – 3-max',          name:'SNG $0.10 – 3-max',buyIn:'0.10', players:'3', gameType:'SNG' },
+      'sng025-3max':        { label:'SNG $0.25 – 3-max',          name:'SNG $0.25 – 3-max',buyIn:'0.25', players:'3', gameType:'SNG' },
+      'sng025-6max':        { label:'SNG $0.25 – 6-max',          name:'SNG $0.25 – 6-max',buyIn:'0.25', players:'6', gameType:'SNG' },
+      'sng1-3max':          { label:'SNG $1.00 – 3-max',          name:'SNG $1.00 – 3-max',buyIn:'1.00', players:'3', gameType:'SNG' },
+      'sng1-6max':          { label:'SNG $1.00 – 6-max',          name:'SNG $1.00 – 6-max',buyIn:'1.00', players:'6', gameType:'SNG' },
+      'mystery-freeroll-gg':{ label:'Mystery Freeroll (GG) – $0', name:'Mystery Freeroll', buyIn:'0',    players:'18',gameType:'MTT' },
     };
     const ROOM_PRESET_KEYS = {
-      '888': ['sng010-3max', 'mtt-freebuy-888', 'freeroll-zilnic-888'],
-      'gg':  ['sng025-3max', 'sng025-6max', 'sng1-3max', 'sng1-6max', 'mystery-freeroll-gg'],
+      '888': ['sng010-3max','mtt-freebuy-888','freeroll-zilnic-888'],
+      'gg':  ['sng025-3max','sng025-6max','sng1-3max','sng1-6max','mystery-freeroll-gg'],
     };
+
     function updateQuickPresetOptions(room) {
       const qp = document.getElementById('quick-preset');
       if (!qp) return;
-      const allowed = ROOM_PRESET_KEYS[room] || [];
-      // Remove all non-placeholder options (iOS Safari ignores hidden/disabled on <option>)
-      Array.from(qp.options).forEach(opt => {
-        if (opt.value !== '') opt.remove();
-      });
-      // Re-add only the options belonging to this room
-      allowed.forEach(key => {
-        const p = PRESETS[key];
-        if (!p) return;
+      Array.from(qp.options).forEach(o => { if (o.value) o.remove(); });
+      (ROOM_PRESET_KEYS[room] || []).forEach(key => {
+        const p = PRESETS[key]; if (!p) return;
         const opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = p.label;
+        opt.value = key; opt.textContent = p.label;
         qp.appendChild(opt);
       });
       qp.value = '';
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const qp = document.getElementById('quick-preset');
-      if (qp) {
-        qp.addEventListener('change', () => {
-          const val = qp.value;
-          if (!val) return;
-          const p = PRESETS[val];
-          if (!p) return;
-          document.getElementById('name').value = p.name;
-          document.getElementById('buyIn').value = p.buyIn;
-          document.getElementById('players').value = p.players;
-          document.getElementById('gameType').value = p.gameType;
-          document.getElementById('rebuys').value = '0';
-          document.getElementById('addon').value = '0';
-          qp.value = '';
-          const pos = document.getElementById('position');
-          if (pos) pos.focus();
-        });
-      }
-    });
-
-
+    // ── State ────────────────────────────────────────────────────────────────
     const STORAGE_KEY = 'poker-tracker-v1';
-
     const DEFAULT_BALANCE = { '888': 58.99, 'gg': 49.92 };
+
     function loadState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) {
-          return { room: '888', view: '888', games: { '888': [], 'gg': [] }, baseBalances: { '888': DEFAULT_BALANCE['888'], 'gg': DEFAULT_BALANCE['gg'] } };
-        }
-        const parsed = JSON.parse(raw);
-        if (!parsed.games) parsed.games = { '888': [], 'gg': [] };
-        if (!parsed.games['888']) parsed.games['888'] = [];
-        if (!parsed.games['gg']) parsed.games['gg'] = [];
-        if (!parsed.room) parsed.room = '888';
-        if (!parsed.view) parsed.view = parsed.room;
-        if (!parsed.baseBalances) {
-          const p888 = parsed.games['888'].reduce((s,g)=>s+(Number(g.profit)||0),0);
-          const pgg  = parsed.games['gg'].reduce((s,g)=>s+(Number(g.profit)||0),0);
-          parsed.baseBalances = {
-            '888': +(DEFAULT_BALANCE['888'] - p888).toFixed(2),
-            'gg':  +(DEFAULT_BALANCE['gg']  - pgg).toFixed(2),
-          };
-        }
-        return parsed;
-      } catch (e) {
-        return { room: '888', view: '888', games: { '888': [], 'gg': [] }, baseBalances: { '888': DEFAULT_BALANCE['888'], 'gg': DEFAULT_BALANCE['gg'] } };
-      }
+        if (!raw) return freshState();
+        const s = JSON.parse(raw);
+        if (!s.games) s.games = { '888':[], 'gg':[] };
+        if (!s.games['888']) s.games['888'] = [];
+        if (!s.games['gg'])  s.games['gg']  = [];
+        if (!s.room) s.room = '888';
+        if (!s.view) s.view = s.room;
+        if (!s.baseBalances) s.baseBalances = computeBaseBalances(s.games);
+        return s;
+      } catch { return freshState(); }
     }
 
-    function saveState(state) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    function freshState() {
+      return { room:'888', view:'888', games:{'888':[],'gg':[]}, baseBalances:{...DEFAULT_BALANCE} };
     }
 
-    function createGameEntry(room, data) {
-      const buyIn = Number(data.buyIn) || 0;
-      const rebuys = Number(data.rebuys) || 0;
-      const addon = Number(data.addon) || 0;
-      const players = Number(data.players) || 0;
-      const position = Number(data.position) || 0;
-      const prize = Number(data.prize) || 0;
-      const totalCost = buyIn + rebuys * buyIn + addon;
-      const profit = prize - totalCost;
-      const itm = prize > 0;
-      let percentile = null;
-      if (players > 0 && position > 0 && position <= players) {
-        percentile = players === 1 ? 0 : ((position - 1) / (players - 1)) * 100;
-      }
+    function computeBaseBalances(games) {
+      const p888 = games['888'].reduce((s,g)=>s+(Number(g.profit)||0), 0);
+      const pgg  = games['gg'].reduce((s,g)=>s+(Number(g.profit)||0), 0);
       return {
-        id: Date.now() + '_' + Math.random().toString(36).slice(2),
-        room,
-        name: data.name || '',
-        gameType: data.gameType || 'MTT',
-        date: data.date || getLocalDateString(),
-        buyIn,
-        rebuys,
-        addon,
-        players,
-        position,
-        prize,
-        totalCost,
-        profit,
-        itm,
-        percentile,
-        notes: data.notes || '',
-        createdAt: new Date().toISOString()
+        '888': +(DEFAULT_BALANCE['888'] - p888).toFixed(2),
+        'gg':  +(DEFAULT_BALANCE['gg']  - pgg).toFixed(2),
       };
     }
 
-    function formatMoney(val) {
-      return (Number(val) || 0).toFixed(2);
+    const saveState = s => localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+
+    function createGameEntry(room, data) {
+      const buyIn  = Number(data.buyIn)  || 0;
+      const rebuys = Number(data.rebuys) || 0;
+      const addon  = Number(data.addon)  || 0;
+      const players   = Number(data.players)  || 0;
+      const position  = Number(data.position) || 0;
+      const prize     = Number(data.prize)    || 0;
+      const totalCost = buyIn + rebuys * buyIn + addon;
+      const profit    = prize - totalCost;
+      let percentile  = null;
+      if (players > 0 && position > 0 && position <= players)
+        percentile = players === 1 ? 0 : ((position-1)/(players-1))*100;
+      return {
+        id: Date.now()+'_'+Math.random().toString(36).slice(2),
+        room, name: data.name||'', gameType: data.gameType||'MTT',
+        date: data.date||getLocalDateString(),
+        buyIn, rebuys, addon, players, position, prize, totalCost, profit,
+        itm: prize > 0, percentile, notes: data.notes||'',
+        createdAt: new Date().toISOString(),
+      };
     }
 
-    function formatPercent(val) {
-      return (val === null || val === undefined || isNaN(val)) ? '-' : val.toFixed(1) + '%';
+    const fmt$   = v => (Number(v)||0).toFixed(2);
+    const fmtPct = v => (v===null||v===undefined||isNaN(v)) ? '-' : v.toFixed(1)+'%';
+
+    function getLocalDateString(date=new Date()) {
+      return date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0')+'-'+String(date.getDate()).padStart(2,'0');
     }
 
-    function buildCumulativeData(games) {
-      if (!games || games.length === 0) return [];
-      const sorted = games.slice().sort((a, b) => (a.date || '').localeCompare(b.date || ''));
-      const firstDate = sorted[0].date || '';
-      let startLabel = '';
-      if (firstDate) {
-        const d = new Date(firstDate + 'T00:00:00');
-        if (!isNaN(d)) {
-          d.setDate(d.getDate() - 1);
-          startLabel = getLocalDateString(d);
-        }
+    // ── Stats ────────────────────────────────────────────────────────────────
+    function calcStats(games) {
+      if (!games?.length) return { games:0,totalProfit:0,totalCost:0,totalPrize:0,itmCount:0,itmRate:0,avgPercentile:null,roi:0,paidGames:0,paidProfit:0,paidCost:0,freeGames:0,freeProfit:0 };
+      let totalProfit=0,totalCost=0,totalPrize=0,itmCount=0,percSum=0,percCount=0;
+      let paidGames=0,paidProfit=0,paidCost=0,freeGames=0,freeProfit=0;
+      for (const g of games) {
+        totalProfit += g.profit; totalCost += g.totalCost; totalPrize += g.prize;
+        if (g.itm) itmCount++;
+        if (typeof g.percentile==='number') { percSum+=g.percentile; percCount++; }
+        const isFree = !Number(g.buyIn) && !Number(g.totalCost);
+        if (isFree) { freeGames++; freeProfit+=g.profit; }
+        else { paidGames++; paidProfit+=g.profit; paidCost+=g.totalCost; }
       }
-      const result = [{ date: startLabel, cum: 0, name: 'Start', profit: 0, isStart: true }];
-      let cum = 0;
-      sorted.forEach(g => {
-        cum += g.profit;
-        result.push({ date: g.date || '?', cum: parseFloat(cum.toFixed(2)), name: g.name || '-', profit: g.profit });
-      });
+      return { games:games.length, totalProfit, totalCost, totalPrize, itmCount,
+        itmRate: games.length ? (itmCount/games.length)*100 : 0,
+        avgPercentile: percCount ? percSum/percCount : null,
+        roi: paidCost ? (paidProfit/paidCost)*100 : 0,
+        paidGames, paidProfit, paidCost, freeGames, freeProfit };
+    }
+
+    // ── Charts ───────────────────────────────────────────────────────────────
+    function buildCumulativeData(games) {
+      if (!games?.length) return [];
+      const sorted = games.slice().sort((a,b)=>(a.date||'').localeCompare(b.date||''));
+      const d0 = new Date(sorted[0].date+'T00:00:00');
+      d0.setDate(d0.getDate()-1);
+      const result = [{ date:getLocalDateString(d0), cum:0, name:'Start', profit:0, isStart:true }];
+      let cum=0;
+      sorted.forEach(g => { cum+=g.profit; result.push({ date:g.date||'?', cum:+cum.toFixed(2), name:g.name||'-', profit:g.profit }); });
       return result;
     }
 
+    // FIX 1: dots removed – only polyline, no circles
     function drawChart(containerId, data, color) {
       const el = document.getElementById(containerId);
       if (!el) return;
-      if (!data || data.length === 0) {
+      if (!data?.length) {
         el.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#6b7280;font-size:12px;">Még nincs adat</div>';
         return;
       }
       const rect = el.getBoundingClientRect();
-      const width = (rect.width && rect.width > 0 ? rect.width : (el.clientWidth || window.innerWidth - 40 || 320));
-      const height = el.clientHeight || 190;
-      const pad = { top: 14, right: 12, bottom: 26, left: 46 };
-      const W = width - pad.left - pad.right;
-      const H = height - pad.top - pad.bottom;
-
-      const vals = data.map(d => d.cum);
-      const minV = Math.min(0, ...vals);
-      const maxV = Math.max(0, ...vals);
-      const range = maxV - minV || 1;
-
-      function xPos(i) { return data.length === 1 ? W / 2 : (i / (data.length - 1)) * W; }
-      function yPos(v) { return H - ((v - minV) / range) * H; }
-
-      const pts = data.map((d, i) => xPos(i) + ',' + yPos(d.cum)).join(' ');
+      const width  = rect.width > 0 ? rect.width : (el.clientWidth||320);
+      const height = el.clientHeight||190;
+      const pad = { top:14, right:12, bottom:26, left:46 };
+      const W = width-pad.left-pad.right, H = height-pad.top-pad.bottom;
+      const vals = data.map(d=>d.cum);
+      const minV = Math.min(0,...vals), maxV = Math.max(0,...vals);
+      const range = (maxV-minV)||1;
+      const xPos = i => data.length===1 ? W/2 : (i/(data.length-1))*W;
+      const yPos = v => H-((v-minV)/range)*H;
+      const pts  = data.map((d,i)=>xPos(i)+','+yPos(d.cum)).join(' ');
       const zeroY = yPos(0);
-
-      const ticks = [{ v: minV, y: yPos(minV) }, { v: 0, y: zeroY }, { v: maxV, y: yPos(maxV) }];
-
+      const ticks = [{ v:minV }, { v:0 }, { v:maxV }].filter((t,i,a)=>a.findIndex(x=>Math.abs(x.v-t.v)<0.001)===i);
+      const step = Math.max(1,Math.floor(data.length/5));
       const xLabels = [];
-      const step = Math.max(1, Math.floor(data.length / 5));
-      for (let i = 1; i < data.length; i += step) {
-        xLabels.push({ i, date: data[i].date });
-      }
-      if (xLabels.length === 0 || xLabels[xLabels.length - 1].i !== data.length - 1) {
-        xLabels.push({ i: data.length - 1, date: data[data.length - 1].date });
-      }
+      for (let i=1; i<data.length; i+=step) xLabels.push({i,date:data[i].date});
+      if (!xLabels.length||xLabels[xLabels.length-1].i!==data.length-1) xLabels.push({i:data.length-1,date:data[data.length-1].date});
 
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" style="overflow:visible; display:block;">
+      el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" style="overflow:visible;display:block;">
         <g transform="translate(${pad.left},${pad.top})">
-          ${ticks.map(t => `
-            <text x="-6" y="${t.y + 3}" text-anchor="end" fill="#6b7280" font-size="10">${t.v >= 0 ? '+' : ''}${t.v.toFixed(2)}</text>
-          `).join('')}
+          ${ticks.map(t=>`<text x="-6" y="${yPos(t.v)+3}" text-anchor="end" fill="#6b7280" font-size="10">${t.v>=0?'+':''}${t.v.toFixed(2)}</text>`).join('')}
           <line x1="0" y1="${zeroY}" x2="${W}" y2="${zeroY}" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="4,3"/>
           <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-          ${data.map((d,i) => `<circle cx="${xPos(i)}" cy="${yPos(d.cum)}" r="${data.length === 1 ? 5 : 3}" fill="${color}" stroke="#020617" stroke-width="1.5"/>`).join('')}
-          ${xLabels.map(l => `<text x="${xPos(l.i)}" y="${H + 18}" text-anchor="middle" fill="#6b7280" font-size="10">${/^\d{4}-\d{2}-\d{2}/.test(l.date || '') ? (l.date || '').slice(5) : (l.date || '')}</text>`).join('')}
+          ${xLabels.map(l=>`<text x="${xPos(l.i)}" y="${H+18}" text-anchor="middle" fill="#6b7280" font-size="10">${/^\d{4}-\d{2}-\d{2}/.test(l.date||'')?(l.date||'').slice(5):(l.date||'')}</text>`).join('')}
           <line x1="0" y1="0" x2="0" y2="${H}" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
           <line x1="0" y1="${H}" x2="${W}" y2="${H}" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
           <line class="hover-guide" x1="0" y1="0" x2="0" y2="${H}" stroke="${color}" stroke-width="1" stroke-dasharray="3,3" opacity="0"/>
           <circle class="hover-dot" cx="0" cy="0" r="4" fill="${color}" stroke="#020617" stroke-width="1.5" opacity="0"/>
           <rect class="hover-area" x="0" y="0" width="${W}" height="${H}" fill="transparent" style="cursor:crosshair"/>
         </g>
-      </svg>
-      <div class="chart-tooltip"></div>`;
-      el.innerHTML = svg;
+      </svg><div class="chart-tooltip"></div>`;
 
       const svgEl = el.querySelector('svg');
-      const tip = el.querySelector('.chart-tooltip');
+      const tip   = el.querySelector('.chart-tooltip');
       const guide = el.querySelector('.hover-guide');
-      const dot = el.querySelector('.hover-dot');
-      const area = el.querySelector('.hover-area');
+      const dot   = el.querySelector('.hover-dot');
+      const area  = el.querySelector('.hover-area');
 
       function showAt(clientX) {
         const r = svgEl.getBoundingClientRect();
-        const localX = clientX - r.left - pad.left;
-        let idx = 0;
-        if (data.length > 1) idx = Math.round((localX / W) * (data.length - 1));
-        idx = Math.max(0, Math.min(data.length - 1, idx));
+        const localX = clientX-r.left-pad.left;
+        let idx = data.length>1 ? Math.round((localX/W)*(data.length-1)) : 0;
+        idx = Math.max(0,Math.min(data.length-1,idx));
         const d = data[idx];
-        const cx = xPos(idx), cy = yPos(d.cum);
-        guide.setAttribute('x1', cx); guide.setAttribute('x2', cx); guide.setAttribute('opacity', '0.6');
-        dot.setAttribute('cx', cx); dot.setAttribute('cy', cy); dot.setAttribute('opacity', '1');
-        const profitStr = d.isStart ? 'Kezdés' : `${d.profit >= 0 ? '+' : ''}${d.profit.toFixed(2)}$`;
-        const nameLine = d.isStart ? '' : `<div>${d.name}</div>`;
-        tip.innerHTML = `<strong>${d.date || '-'}</strong>${nameLine}<div>Profit: ${profitStr}</div><div>Kum: ${d.cum >= 0 ? '+' : ''}${d.cum.toFixed(2)}$</div>`;
-        tip.style.display = 'block';
-        let left = pad.left + cx;
+        const cx=xPos(idx), cy=yPos(d.cum);
+        guide.setAttribute('x1',cx); guide.setAttribute('x2',cx); guide.setAttribute('opacity','0.6');
+        dot.setAttribute('cx',cx); dot.setAttribute('cy',cy); dot.setAttribute('opacity','1');
+        const profitStr = d.isStart ? 'Kezdés' : `${d.profit>=0?'+':''}${d.profit.toFixed(2)}$`;
+        tip.innerHTML = `<strong>${d.date||'-'}</strong>${d.isStart?'':'<div>'+d.name+'</div>'}<div>Profit: ${profitStr}</div><div>Kum: ${d.cum>=0?'+':''}${d.cum.toFixed(2)}$</div>`;
+        tip.style.display='block';
+        let left = pad.left+cx;
         const tipW = tip.offsetWidth;
-        if (left - tipW / 2 < 4) left = tipW / 2 + 4;
-        if (left + tipW / 2 > width - 4) left = width - tipW / 2 - 4;
-        tip.style.left = left + 'px';
-        tip.style.top = (pad.top + cy - 8) + 'px';
+        left = Math.max(tipW/2+4, Math.min(width-tipW/2-4, left));
+        tip.style.left=left+'px'; tip.style.top=(pad.top+cy-8)+'px';
       }
-      function hide() {
-        tip.style.display = 'none';
-        guide.setAttribute('opacity', '0');
-        dot.setAttribute('opacity', '0');
-      }
-      area.addEventListener('mousemove', e => showAt(e.clientX));
+      function hide() { tip.style.display='none'; guide.setAttribute('opacity','0'); dot.setAttribute('opacity','0'); }
+      area.addEventListener('mousemove', e=>showAt(e.clientX));
       area.addEventListener('mouseleave', hide);
-      area.addEventListener('touchstart', e => { if (e.touches[0]) showAt(e.touches[0].clientX); }, { passive: true });
-      area.addEventListener('touchmove',  e => { if (e.touches[0]) showAt(e.touches[0].clientX); }, { passive: true });
-      area.addEventListener('click', e => showAt(e.clientX));
+      area.addEventListener('touchstart', e=>{ if(e.touches[0]) showAt(e.touches[0].clientX); }, {passive:true});
+      area.addEventListener('touchmove',  e=>{ if(e.touches[0]) showAt(e.touches[0].clientX); }, {passive:true});
+      area.addEventListener('click', e=>showAt(e.clientX));
     }
 
+    // main charts period filter
     let activePeriod = 'all';
 
     function filterByPeriod(games, period) {
-      if (period === 'all') return games;
-      const now = new Date();
-      let cutoff;
-      if (period === 'day') {
-        cutoff = getLocalDateString(now);
-      } else if (period === 'week') {
-        const d = new Date(now); d.setDate(d.getDate() - 7);
-        cutoff = getLocalDateString(d);
-      } else if (period === 'month') {
-        const d = new Date(now); d.setMonth(d.getMonth() - 1);
-        cutoff = getLocalDateString(d);
-      }
-      return games.filter(g => (g.date || '') >= cutoff);
+      if (period==='all') return games;
+      const now=new Date(), d=new Date(now);
+      if (period==='day') return games.filter(g=>(g.date||'')===getLocalDateString(now));
+      if (period==='week') d.setDate(d.getDate()-7);
+      else if (period==='month') d.setMonth(d.getMonth()-1);
+      const cutoff=getLocalDateString(d);
+      return games.filter(g=>(g.date||'')>=cutoff);
     }
 
     function renderCharts() {
       const f888 = filterByPeriod(state.games['888'], activePeriod);
       const fgg  = filterByPeriod(state.games['gg'],  activePeriod);
-      const fall = filterByPeriod([...state.games['888'], ...state.games['gg']], activePeriod);
-      const g888 = buildCumulativeData(f888);
-      const ggg  = buildCumulativeData(fgg);
-      const gall = buildCumulativeData(fall);
-      drawChart('chart-888', g888, '#22c55e');
-      drawChart('chart-gg',  ggg,  '#eab308');
-      drawChart('chart-all', gall, '#a855f7');
+      const fall = filterByPeriod([...state.games['888'],...state.games['gg']], activePeriod);
+      drawChart('chart-888', buildCumulativeData(f888), '#22c55e');
+      drawChart('chart-gg',  buildCumulativeData(fgg),  '#eab308');
+      drawChart('chart-all', buildCumulativeData(fall), '#a855f7');
     }
 
-    // ===== New charts (period-aggregated) =====
+    // ── New charts (cumulative by period) ────────────────────────────────────
     let newChartsPeriod = 'week';
 
     function isoWeekKey(date) {
-      const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-      const dayNum = d.getUTCDay() || 7;
-      d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-      const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-      const weekNum = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-      return d.getUTCFullYear() + '-W' + String(weekNum).padStart(2, '0');
+      const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));
+      const day=d.getUTCDay()||7; d.setUTCDate(d.getUTCDate()+4-day);
+      const ys=new Date(Date.UTC(d.getUTCFullYear(),0,1));
+      return d.getUTCFullYear()+'-W'+String(Math.ceil((((d-ys)/86400000)+1)/7)).padStart(2,'0');
     }
-    function monthKey(date) {
-      return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0');
-    }
-    function dayKey(date) { return getLocalDateString(date); }
-    function yearKey(date) { return String(date.getFullYear()); }
+    const monthKey = d => d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+    const dayKey   = d => getLocalDateString(d);
+    const yearKey  = d => String(d.getFullYear());
 
     function aggregateBy(games, grouping, metric) {
-      const buckets = {};
+      const buckets={};
       games.forEach(g => {
         if (!g.date) return;
-        const d = new Date(g.date + 'T00:00:00');
+        const d=new Date(g.date+'T00:00:00');
         if (isNaN(d.getTime())) return;
-        let key;
-        if (grouping === 'week') key = isoWeekKey(d);
-        else if (grouping === 'month') key = monthKey(d);
-        else if (grouping === 'year') key = yearKey(d);
-        else key = dayKey(d);
-        if (!buckets[key]) buckets[key] = { key, games: [] };
+        const key = grouping==='week'?isoWeekKey(d):grouping==='month'?monthKey(d):grouping==='year'?yearKey(d):dayKey(d);
+        if (!buckets[key]) buckets[key]={key,games:[]};
         buckets[key].games.push(g);
       });
-      const arr = Object.values(buckets).sort((a, b) => a.key.localeCompare(b.key));
-      return arr.map(b => {
-        const s = calcStats(b.games);
-        let value = 0;
-        if (metric === 'profit' || metric === 'cumprofit') value = s.totalProfit;
-        else if (metric === 'roi') value = s.roi;
-        else if (metric === 'itm') value = s.itmRate;
-        else if (metric === 'games') value = s.games;
-        else if (metric === 'cost') value = s.totalCost;
-        else if (metric === 'prize') value = s.totalPrize;
-        return { date: b.key, value: +value.toFixed(2), profit: +s.totalProfit.toFixed(2), n: s.games };
+      return Object.values(buckets).sort((a,b)=>a.key.localeCompare(b.key)).map(b=>{
+        const s=calcStats(b.games);
+        let value=0;
+        if (metric==='profit'||metric==='cumprofit') value=s.totalProfit;
+        else if (metric==='roi') value=s.roi;
+        else if (metric==='itm') value=s.itmRate;
+        else if (metric==='games') value=s.games;
+        else if (metric==='cost') value=s.totalCost;
+        else if (metric==='prize') value=s.totalPrize;
+        return { date:b.key, value:+value.toFixed(2), profit:+s.totalProfit.toFixed(2), n:s.games };
       });
     }
 
     function formatBucketLabel(key) {
       if (!key) return '';
-      // Week: "2026-W21" -> "W21 '26"
-      let m = key.match(/^(\d{4})-W(\d{2})$/);
-      if (m) return 'W' + m[2] + " '" + m[1].slice(2);
-      // Month: "2026-05" -> "2026.05"
-      m = key.match(/^(\d{4})-(\d{2})$/);
-      if (m) {
-        const months = ['Jan','Feb','Már','Ápr','Máj','Jún','Júl','Aug','Sze','Okt','Nov','Dec'];
-        return months[parseInt(m[2],10)-1] + " '" + m[1].slice(2);
-      }
-      // Year
+      let m=key.match(/^(\d{4})-W(\d{2})$/);
+      if (m) return 'W'+m[2]+" '"+m[1].slice(2);
+      m=key.match(/^(\d{4})-(\d{2})$/);
+      if (m) { const mn=['Jan','Feb','Már','Ápr','Máj','Jún','Júl','Aug','Sze','Okt','Nov','Dec']; return mn[parseInt(m[2],10)-1]+" '"+m[1].slice(2); }
       if (/^\d{4}$/.test(key)) return key;
-      // Day: "2026-05-21" -> "05.21"
-      m = key.match(/^\d{4}-(\d{2})-(\d{2})$/);
-      if (m) return m[1] + '.' + m[2];
+      m=key.match(/^\d{4}-(\d{2})-(\d{2})$/);
+      if (m) return m[1]+'.'+m[2];
       return key;
     }
 
-    function drawBarChart(containerId, data, color, opts) {
-      opts = opts || {};
-      const el = document.getElementById(containerId);
-      if (!el) return;
-      if (!data || data.length === 0) {
-        el.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#6b7280;font-size:12px;">Még nincs adat</div>';
-        return;
-      }
-      const rect = el.getBoundingClientRect();
-      const width = Math.max(280, (rect.width && rect.width > 0 ? rect.width : (el.clientWidth || el.offsetWidth || 320)));
-      const height = Math.max(170, el.clientHeight || el.offsetHeight || 190);
-      const pad = { top: 18, right: 14, bottom: 34, left: 48 };
-      const W = width - pad.left - pad.right;
-      const H = height - pad.top - pad.bottom;
-      const vals = data.map(d => d.value);
-      const minV = Math.min(0, ...vals);
-      const maxV = Math.max(0, ...vals);
-      const range = (maxV - minV) || 1;
-      const zeroY = H - ((0 - minV) / range) * H;
-      const n = data.length;
-      const slot = W / n;
-      // Cap bar width so 1-2 bars don't fill the entire chart
-      const barW = Math.min(48, Math.max(6, slot * 0.6));
-      const suffix = opts.suffix || '';
-      const fmt = (v) => (opts.percent ? v.toFixed(1) + '%' : (v >= 0 ? '+' : '') + v.toFixed(opts.intOnly ? 0 : 2));
-      const fmtShort = (v) => (opts.percent ? v.toFixed(0) + '%' : (v >= 0 ? '+' : '') + (opts.intOnly ? v.toFixed(0) : v.toFixed(Math.abs(v) >= 100 ? 0 : (Math.abs(v) >= 10 ? 1 : 2))));
-      const ticks = [{ v: minV }, { v: 0 }, { v: maxV }].filter((t,i,a) => a.findIndex(x=>Math.abs(x.v-t.v)<0.001)===i);
-      const stepLabel = Math.max(1, Math.ceil(n / Math.max(3, Math.floor(W / 60))));
-      const bars = data.map((d, i) => {
-        const cx = i * slot + slot / 2;
-        const y = d.value >= 0 ? H - ((d.value - minV) / range) * H : zeroY;
-        const h = Math.max(1, Math.abs((d.value / range) * H));
-        const fill = d.value >= 0 ? color : '#ef4444';
-        const labelY = d.value >= 0 ? y - 4 : (y + h + 11);
-        const showLabel = barW >= 20;
-        const valueLabel = showLabel
-          ? `<text x="${cx}" y="${labelY}" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="600">${fmtShort(d.value)}</text>`
-          : '';
-        return `<g><rect x="${cx - barW/2}" y="${y}" width="${barW}" height="${h}" fill="${fill}" rx="3" data-i="${i}"><title>${formatBucketLabel(d.date)}: ${fmt(d.value)}${suffix} (${d.n} db)</title></rect>${valueLabel}</g>`;
-      }).join('');
-      const xlabels = data.map((d, i) => {
-        if (i % stepLabel !== 0 && i !== n - 1) return '';
-        const label = formatBucketLabel(d.date);
-        return `<text x="${i * slot + slot/2}" y="${H + 22}" text-anchor="middle" fill="#94a3b8" font-size="10">${label}</text>`;
-      }).join('');
-      const tickEls = ticks.map(t => {
-        const y = H - ((t.v - minV) / range) * H;
-        return `<text x="-6" y="${y + 3}" text-anchor="end" fill="#6b7280" font-size="10">${fmt(t.v)}</text>
-                <line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>`;
-      }).join('');
-      el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" style="overflow:visible; display:block;">
-        <g transform="translate(${pad.left},${pad.top})">
-          ${tickEls}
-          <line x1="0" y1="${zeroY}" x2="${W}" y2="${zeroY}" stroke="rgba(255,255,255,0.30)" stroke-width="1"/>
-          ${bars}
-          ${xlabels}
-        </g>
-      </svg>`;
-    }
-
-    function aggregatedToLineData(agg) {
-      // Convert aggregateBy() output into the shape drawChart expects.
-      // Prepend a 0 start point so the line begins at zero.
-      const arr = agg.map(d => ({
-        date: formatBucketLabel(d.date),
-        cum: d.value,
-        profit: d.value,
-        name: d.n + ' verseny',
-        isStart: false,
-      }));
-      if (arr.length === 0) return arr;
-      return [{ date: 'Start', cum: 0, profit: 0, name: '', isStart: true }, ...arr];
+    // FIX 3: new charts are truly cumulative – never resets to 0 between periods
+    function buildCumulativeLineFromAgg(agg) {
+      let cum=0;
+      const cumArr = agg.map(d=>{ cum+=d.value; return {...d, value:+cum.toFixed(2)}; });
+      if (!cumArr.length) return [];
+      return [{ date:'Start', cum:0, name:'', profit:0, isStart:true },
+              ...cumArr.map(d=>({ date:formatBucketLabel(d.date), cum:d.value, profit:d.value, name:d.n+' verseny', isStart:false }))];
     }
 
     function renderNewCharts() {
-      const g = newChartsPeriod; // 'week' or 'month'
-      const a888 = aggregateBy(state.games['888'], g, 'profit');
-      const agg  = aggregateBy(state.games['gg'], g, 'profit');
-      const aall = aggregateBy([...state.games['888'], ...state.games['gg']], g, 'profit');
-      drawChart('nchart-888', aggregatedToLineData(a888), '#22c55e');
-      drawChart('nchart-gg',  aggregatedToLineData(agg),  '#eab308');
-      drawChart('nchart-all', aggregatedToLineData(aall), '#a855f7');
+      const g=newChartsPeriod;
+      drawChart('nchart-888', buildCumulativeLineFromAgg(aggregateBy(state.games['888'],g,'profit')), '#22c55e');
+      drawChart('nchart-gg',  buildCumulativeLineFromAgg(aggregateBy(state.games['gg'],g,'profit')),  '#eab308');
+      drawChart('nchart-all', buildCumulativeLineFromAgg(aggregateBy([...state.games['888'],...state.games['gg']],g,'profit')), '#a855f7');
       renderCustomChart();
     }
 
+    function drawBarChart(containerId, data, color, opts={}) {
+      const el=document.getElementById(containerId);
+      if (!el) return;
+      if (!data?.length) { el.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#6b7280;font-size:12px;">Még nincs adat</div>'; return; }
+      const rect=el.getBoundingClientRect();
+      const width=Math.max(280,rect.width>0?rect.width:(el.clientWidth||320));
+      const height=Math.max(170,el.clientHeight||190);
+      const pad={top:18,right:14,bottom:34,left:48};
+      const W=width-pad.left-pad.right, H=height-pad.top-pad.bottom;
+      const vals=data.map(d=>d.value);
+      const minV=Math.min(0,...vals), maxV=Math.max(0,...vals);
+      const range=(maxV-minV)||1;
+      const zeroY=H-((0-minV)/range)*H;
+      const n=data.length, slot=W/n;
+      const barW=Math.min(48,Math.max(6,slot*0.6));
+      const fmt = v => opts.percent ? v.toFixed(1)+'%' : (v>=0?'+':'')+v.toFixed(opts.intOnly?0:2);
+      const fmtS= v => opts.percent ? v.toFixed(0)+'%' : (v>=0?'+':'')+(opts.intOnly?v.toFixed(0):v.toFixed(Math.abs(v)>=100?0:Math.abs(v)>=10?1:2));
+      const ticks=[{v:minV},{v:0},{v:maxV}].filter((t,i,a)=>a.findIndex(x=>Math.abs(x.v-t.v)<0.001)===i);
+      const stepL=Math.max(1,Math.ceil(n/Math.max(3,Math.floor(W/60))));
+      const bars=data.map((d,i)=>{
+        const cx=i*slot+slot/2, y=d.value>=0?H-((d.value-minV)/range)*H:zeroY;
+        const h=Math.max(1,Math.abs((d.value/range)*H));
+        const fill=d.value>=0?color:'#ef4444';
+        const lY=d.value>=0?y-4:y+h+11;
+        const lbl=barW>=20?`<text x="${cx}" y="${lY}" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="600">${fmtS(d.value)}</text>`:'';
+        return `<g><rect x="${cx-barW/2}" y="${y}" width="${barW}" height="${h}" fill="${fill}" rx="3"><title>${formatBucketLabel(d.date)}: ${fmt(d.value)} (${d.n} db)</title></rect>${lbl}</g>`;
+      }).join('');
+      const xlbls=data.map((d,i)=>i%stepL!==0&&i!==n-1?'':
+        `<text x="${i*slot+slot/2}" y="${H+22}" text-anchor="middle" fill="#94a3b8" font-size="10">${formatBucketLabel(d.date)}</text>`).join('');
+      const tickEls=ticks.map(t=>{const y=H-((t.v-minV)/range)*H;
+        return `<text x="-6" y="${y+3}" text-anchor="end" fill="#6b7280" font-size="10">${fmt(t.v)}</text><line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>`;}).join('');
+      el.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" style="overflow:visible;display:block;">
+        <g transform="translate(${pad.left},${pad.top})">${tickEls}
+          <line x1="0" y1="${zeroY}" x2="${W}" y2="${zeroY}" stroke="rgba(255,255,255,0.30)" stroke-width="1"/>
+          ${bars}${xlbls}
+        </g></svg>`;
+    }
+
+    // FIX 4: custom chart line type starts from 0
     function renderCustomChart() {
-      const metric = document.getElementById('cc-metric')?.value || 'profit';
-      const group = document.getElementById('cc-group')?.value || 'week';
-      const room = document.getElementById('cc-room')?.value || 'all';
-      const type = document.getElementById('cc-type')?.value || 'bar';
-      const from = document.getElementById('cc-from')?.value || '';
-      const to = document.getElementById('cc-to')?.value || '';
-      let games = room === 'all' ? [...state.games['888'], ...state.games['gg']] : state.games[room].slice();
-      if (from) games = games.filter(g => (g.date || '') >= from);
-      if (to)   games = games.filter(g => (g.date || '') <= to);
-      let data = aggregateBy(games, group, metric);
-      if (metric === 'cumprofit') {
-        let c = 0;
-        data = data.map(d => { c += d.value; return { ...d, value: +c.toFixed(2) }; });
-      }
-      const labels = {profit:'Profit',cumprofit:'Kumulált profit',roi:'ROI',itm:'ITM',games:'Versenyek',cost:'Befizetés',prize:'Visszakapott'};
-      const groupLabels = {day:'napi',week:'heti',month:'havi',year:'éves'};
-      const roomLabels = {all:'Összes',888:'888poker',gg:'GGPoker'};
-      document.getElementById('cc-title').textContent = `${labels[metric]} – ${groupLabels[group]} (${roomLabels[room]})`;
-      const color = room === '888' ? '#22c55e' : room === 'gg' ? '#eab308' : '#a855f7';
-      const isPct = metric === 'roi' || metric === 'itm';
-      const isInt = metric === 'games';
-      if (type === 'line') {
-        // adapt to drawChart shape
-        const lineData = data.map(d => ({ date: d.date, cum: d.value, profit: d.value, name: d.date, isStart: false }));
-        drawChart('cc-chart', lineData, color);
+      const metric=document.getElementById('cc-metric')?.value||'profit';
+      const group =document.getElementById('cc-group')?.value||'week';
+      const room  =document.getElementById('cc-room')?.value||'all';
+      const type  =document.getElementById('cc-type')?.value||'bar';
+      const from  =document.getElementById('cc-from')?.value||'';
+      const to    =document.getElementById('cc-to')?.value||'';
+      let games = room==='all' ? [...state.games['888'],...state.games['gg']] : state.games[room].slice();
+      if (from) games=games.filter(g=>(g.date||'')>=from);
+      if (to)   games=games.filter(g=>(g.date||'')<=to);
+      let data=aggregateBy(games,group,metric);
+      if (metric==='cumprofit') { let c=0; data=data.map(d=>({...d,value:+(c+=d.value).toFixed(2)})); }
+      const labels={profit:'Profit',cumprofit:'Kumulált profit',roi:'ROI',itm:'ITM',games:'Versenyek',cost:'Befizetés',prize:'Visszakapott'};
+      const gLabels={day:'napi',week:'heti',month:'havi',year:'éves'};
+      const rLabels={all:'Összes','888':'888poker',gg:'GGPoker'};
+      document.getElementById('cc-title').textContent=`${labels[metric]} – ${gLabels[group]} (${rLabels[room]})`;
+      const color=room==='888'?'#22c55e':room==='gg'?'#eab308':'#a855f7';
+      if (type==='line') {
+        // Start from 0, then cumulate
+        const lineData=[
+          {date:'Start',cum:0,profit:0,name:'',isStart:true},
+          ...data.map(d=>({date:formatBucketLabel(d.date),cum:d.value,profit:d.value,name:d.n+' verseny',isStart:false}))
+        ];
+        drawChart('cc-chart',lineData,color);
       } else {
-        drawBarChart('cc-chart', data, color, { percent: isPct, intOnly: isInt });
+        drawBarChart('cc-chart',data,color,{percent:metric==='roi'||metric==='itm',intOnly:metric==='games'});
       }
     }
 
-    function calcStats(games) {
-      if (!games || games.length === 0) {
-        return { games:0,totalProfit:0,totalCost:0,totalPrize:0,itmCount:0,itmRate:0,avgPercentile:null,roi:0,
-                 paidGames:0,paidProfit:0,paidCost:0,freeGames:0,freeProfit:0 };
-      }
-      let totalProfit=0,totalCost=0,totalPrize=0,itmCount=0,percSum=0,percCount=0;
-      let paidGames=0,paidProfit=0,paidCost=0,freeGames=0,freeProfit=0;
-      for (const g of games) {
-        totalProfit += g.profit;
-        totalCost += g.totalCost;
-        totalPrize += g.prize;
-        if (g.itm) itmCount += 1;
-        if (typeof g.percentile === 'number') {
-          percSum += g.percentile;
-          percCount += 1;
-        }
-        const isFree = (Number(g.buyIn) || 0) === 0 && (Number(g.totalCost) || 0) === 0;
-        if (isFree) { freeGames += 1; freeProfit += g.profit; }
-        else { paidGames += 1; paidProfit += g.profit; paidCost += g.totalCost; }
-      }
-      return {
-        games: games.length,
-        totalProfit,
-        totalCost,
-        totalPrize,
-        itmCount,
-        itmRate: games.length ? (itmCount / games.length) * 100 : 0,
-        avgPercentile: percCount ? percSum / percCount : null,
-        roi: paidCost ? (paidProfit / paidCost) * 100 : 0,
-        paidGames, paidProfit, paidCost,
-        freeGames, freeProfit
-      };
+    // ── Period summary ────────────────────────────────────────────────────────
+    const periodState = { mode:'today', from:'', to:'' };
+
+    function periodRange() {
+      const today=new Date(), ts=getLocalDateString(today);
+      if (periodState.mode==='custom') return {from:periodState.from||'0000-01-01',to:periodState.to||'9999-12-31'};
+      if (periodState.mode==='today') return {from:ts,to:ts};
+      const d=new Date(today);
+      if (periodState.mode==='week')  d.setDate(d.getDate()-6);
+      else if (periodState.mode==='month') d.setDate(d.getDate()-29);
+      else if (periodState.mode==='year')  d.setDate(d.getDate()-364);
+      return {from:getLocalDateString(d),to:ts};
     }
 
-    function applySparkline(el, needleEl, textEl, stats, label) {
-      if (stats.games === 0 || stats.totalCost === 0) {
-        needleEl.style.left = 'calc(50% - 2px)';
-        needleEl.style.background = '#94a3b8';
-        needleEl.style.boxShadow = '0 0 10px rgba(148,163,184,0.9)';
-        textEl.textContent = 'Még nincs elég adat';
-        return;
-      }
-      const roi = stats.roi;
-      const clamped = Math.max(-150, Math.min(150, roi));
-      const pct = 50 + (clamped / 150) * 50;
-      needleEl.style.left = 'calc(' + pct + '% - 2px)';
-      let r, g, b;
-      if (pct <= 50) {
-        const t = pct / 50;
-        r = Math.round(239 - (239-100)*t);
-        g = Math.round(68 + (116-68)*t);
-        b = Math.round(68 + (139-68)*t);
-      } else {
-        const t = (pct - 50) / 50;
-        r = Math.round(100 - (100-34)*t);
-        g = Math.round(116 + (197-116)*t);
-        b = Math.round(139 - (139-94)*t);
-      }
-      const col = 'rgb(' + r + ',' + g + ',' + b + ')';
-      needleEl.style.background = col;
-      needleEl.style.boxShadow = '0 0 14px ' + col;
-      if (roi > 0.3) textEl.textContent = 'Pluszban vagy ' + label + ' (' + formatPercent(roi) + ' ROI)';
-      else if (roi < -0.3) textEl.textContent = 'Mínuszban vagy ' + label + ' (' + formatPercent(roi) + ' ROI)';
-      else textEl.textContent = 'Közel breakeven ' + label + ' (' + formatPercent(roi) + ' ROI)';
+    function renderPeriodSummary() {
+      const {from,to}=periodRange();
+      const all=[...state.games['888'],...state.games['gg']];
+      const s=calcStats(all.filter(g=>g.date&&g.date>=from&&g.date<=to));
+      document.getElementById('period-range-label').textContent=from+' → '+to;
+      document.getElementById('period-games').textContent=s.games;
+      document.getElementById('period-profit').textContent=fmt$(s.totalProfit)+' $';
+      document.getElementById('period-roi').textContent=fmtPct(s.roi);
+      document.getElementById('period-itm').textContent=fmtPct(s.itmRate);
+      document.getElementById('period-cost').textContent=fmt$(s.totalCost)+' $';
+      document.getElementById('period-prize').textContent=fmt$(s.totalPrize)+' $';
     }
 
-    function bestRoomLabel(sum888, sumGg, field) {
-      const a = sum888[field], b = sumGg[field];
-      if (sum888.games === 0 && sumGg.games === 0) return '-';
-      if (sum888.games === 0) return 'GGPoker';
-      if (sumGg.games === 0) return '888poker';
-      if (a === b) return 'Döntetlen';
-      return a > b ? '888poker' : 'GGPoker';
+    function tourneyTypeKey(g) {
+      const room=g.room==='gg'?'GG':'888';
+      const bi=Number(g.buyIn)||0;
+      const nameRaw=(g.name||'').trim();
+      const biLabel=bi===0?'Freebuy':'$'+fmt$(bi);
+      const label=nameRaw?(room+' · '+nameRaw+' · '+biLabel):(room+' · '+(g.gameType||'MTT')+' · '+biLabel);
+      const key=nameRaw?(room+'|'+nameRaw.toLowerCase().replace(/\s+/g,' ')):(room+'|'+(g.gameType||'MTT')+'|bi:'+bi.toFixed(2));
+      return {key,label,bi};
     }
 
+    function renderTourneyTypes() {
+      const all=[...state.games['888'],...state.games['gg']];
+      const groups={};
+      all.forEach(g=>{ const t=tourneyTypeKey(g); if(!groups[t.key]) groups[t.key]={label:t.label,bi:t.bi,games:[]}; groups[t.key].games.push(g); });
+      const arr=Object.values(groups).sort((a,b)=>b.games.length-a.games.length||a.bi-b.bi);
+      const table=document.getElementById('tourney-type-table');
+      table.innerHTML='<tr><th>Típus</th><th>Db</th><th>Profit</th><th>ROI</th><th>ITM%</th></tr>';
+      if (!arr.length) { table.innerHTML+='<tr><td colspan="5" style="color:var(--muted);text-align:center;">Még nincs adat</td></tr>'; return; }
+      arr.forEach(grp=>{
+        const s=calcStats(grp.games);
+        const pc=s.totalProfit>0?'color:#22c55e;':s.totalProfit<0?'color:#ef4444;':'';
+        const tr=document.createElement('tr');
+        tr.innerHTML=`<td>${grp.label}</td><td>${s.games}</td><td style="${pc}">${fmt$(s.totalProfit)} $</td><td>${fmtPct(s.roi)}</td><td>${fmtPct(s.itmRate)}</td>`;
+        table.appendChild(tr);
+      });
+    }
+
+    // ── Sparkline ─────────────────────────────────────────────────────────────
+    function applySparkline(needleEl, textEl, stats, label) {
+      if (!stats.games||!stats.totalCost) {
+        needleEl.style.left='calc(50% - 2px)'; needleEl.style.background='#94a3b8';
+        needleEl.style.boxShadow='0 0 10px rgba(148,163,184,0.9)';
+        textEl.textContent='Még nincs elég adat'; return;
+      }
+      const roi=stats.roi, clamped=Math.max(-150,Math.min(150,roi)), pct=50+(clamped/150)*50;
+      needleEl.style.left='calc('+pct+'% - 2px)';
+      let r,g,b;
+      if (pct<=50) { const t=pct/50; r=Math.round(239-(239-100)*t); g=Math.round(68+(116-68)*t); b=Math.round(68+(139-68)*t); }
+      else { const t=(pct-50)/50; r=Math.round(100-(100-34)*t); g=Math.round(116+(197-116)*t); b=Math.round(139-(139-94)*t); }
+      const col=`rgb(${r},${g},${b})`;
+      needleEl.style.background=col; needleEl.style.boxShadow=`0 0 14px ${col}`;
+      textEl.textContent = roi>0.3?`Pluszban vagy ${label} (${fmtPct(roi)} ROI)`:roi<-0.3?`Mínuszban vagy ${label} (${fmtPct(roi)} ROI)`:`Közel breakeven ${label} (${fmtPct(roi)} ROI)`;
+    }
+
+    // ── DOM wiring ─────────────────────────────────────────────────────────────
     let state = loadState();
     let editId = null;
 
     const noteBackdrop = document.getElementById('note-viewer-backdrop');
-    const noteBody = document.getElementById('note-viewer-body');
-    const tableBody = document.getElementById('table-body');
-    const roomLayout = document.getElementById('room-layout');
-    const summaryLayout = document.getElementById('summary-layout');
-    const roomLabel = document.getElementById('room-label');
-    const roomText = document.getElementById('room-text');
+    const noteBody     = document.getElementById('note-viewer-body');
+    const tableBody    = document.getElementById('table-body');
 
-    function openNoteViewer(text) {
-      if (!text) return;
-      noteBody.textContent = text;
-      noteBackdrop.style.display = 'flex';
-    }
-
-    function closeNoteViewer() {
-      noteBackdrop.style.display = 'none';
-      noteBody.textContent = '';
-    }
-
-    noteBackdrop.addEventListener('click', (e) => {
-      if (e.target === noteBackdrop) closeNoteViewer();
-    });
+    function openNoteViewer(text) { if (!text) return; noteBody.textContent=text; noteBackdrop.style.display='flex'; }
+    function closeNoteViewer()    { noteBackdrop.style.display='none'; noteBody.textContent=''; }
+    noteBackdrop.addEventListener('click', e=>{ if(e.target===noteBackdrop) closeNoteViewer(); });
     document.getElementById('note-viewer-close-top').addEventListener('click', closeNoteViewer);
     document.getElementById('note-viewer-close-bottom').addEventListener('click', closeNoteViewer);
 
     function setEditMode(game) {
-      document.getElementById('name').value = game.name || '';
-      document.getElementById('buyIn').value = game.buyIn || '';
-      document.getElementById('rebuys').value = game.rebuys || 0;
-      document.getElementById('addon').value = game.addon || 0;
-      document.getElementById('players').value = game.players || '';
-      document.getElementById('position').value = game.position || '';
-      document.getElementById('prize').value = game.prize || '';
-      document.getElementById('gameType').value = game.gameType || 'MTT';
-      document.getElementById('notes').value = game.notes || '';
-      const d = document.getElementById('date'); if (d) d.value = game.date || getLocalDateString();
-      editId = game.id;
-      document.getElementById('submit-btn').textContent = 'Mentés';
+      document.getElementById('name').value     = game.name||'';
+      document.getElementById('buyIn').value    = game.buyIn||'';
+      document.getElementById('rebuys').value   = game.rebuys||0;
+      document.getElementById('addon').value    = game.addon||0;
+      document.getElementById('players').value  = game.players||'';
+      document.getElementById('position').value = game.position||'';
+      document.getElementById('prize').value    = game.prize||'';
+      document.getElementById('gameType').value = game.gameType||'MTT';
+      document.getElementById('notes').value    = game.notes||'';
+      const d=document.getElementById('date'); if(d) d.value=game.date||getLocalDateString();
+      editId=game.id;
+      document.getElementById('submit-btn').textContent='Mentés';
       document.getElementById('btn-cancel-edit').classList.remove('hidden');
       document.getElementById('editing-indicator').classList.remove('hidden');
-      document.getElementById('tournament-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('tournament-form').scrollIntoView({behavior:'smooth',block:'start'});
     }
 
     function clearEditMode() {
       document.getElementById('tournament-form').reset();
-      document.getElementById('rebuys').value = '0';
-      document.getElementById('addon').value = '0';
-      const d = document.getElementById('date'); if (d) d.value = getLocalDateString();
-      editId = null;
-      document.getElementById('submit-btn').textContent = '+ Verseny hozzáadása';
+      document.getElementById('rebuys').value='0'; document.getElementById('addon').value='0';
+      const d=document.getElementById('date'); if(d) d.value=getLocalDateString();
+      editId=null;
+      document.getElementById('submit-btn').textContent='+ Verseny hozzáadása';
       document.getElementById('btn-cancel-edit').classList.add('hidden');
       document.getElementById('editing-indicator').classList.add('hidden');
     }
 
     function deleteGameEntry(id) {
-      iosConfirm('Biztosan törölni szeretnéd ezt a versenyt?', () => {
-        const idx = state.games[state.room].findIndex(x => x.id === id);
-        if (idx !== -1) {
-          state.games[state.room].splice(idx, 1);
-          saveState(state);
-          render();
-        }
+      iosConfirm('Biztosan törölni szeretnéd ezt a versenyt?', ()=>{
+        const idx=state.games[state.room].findIndex(x=>x.id===id);
+        if (idx!==-1) { state.games[state.room].splice(idx,1); saveState(state); render(); }
       }, 'Törlés megerősítése', true);
     }
 
     function renderRoomTable() {
-      tableBody.innerHTML = '';
-      const sortedGames = state.games[state.room].slice().sort((a, b) => {
-        const da = a.date || '';
-        const db = b.date || '';
-        const dateCmp = db.localeCompare(da);
-        if (dateCmp !== 0) return dateCmp;
-        return (b.createdAt || '').localeCompare(a.createdAt || '');
-      });
-      sortedGames.forEach((g) => {
-        const row = document.createElement('div');
-        row.className = 'table-row';
-
-        const profitSpanClass = g.profit > 0 ? 'badge-profit-positive' : g.profit < 0 ? 'badge-profit-negative' : 'badge-profit-even';
-        const profitText = g.profit > 0 ? '+' + formatMoney(g.profit) : g.profit < 0 ? formatMoney(g.profit) : '0.00';
-        const itmClass = g.itm ? 'badge-itm-yes' : 'badge-itm-no';
-        const itmText = g.itm ? 'Pénzben' : 'Nem';
-        const percText = typeof g.percentile === 'number' ? formatPercent(g.percentile) : '-';
-
-        function addCell(text, cls) {
-          const d = document.createElement('div');
-          if (cls) d.className = cls;
-          d.textContent = text;
-          row.appendChild(d);
-          return d;
-        }
-
-        addCell(g.name || '-', '');
-        addCell(g.date || '-', 'cell-center');
-        addCell(formatMoney(g.totalCost), 'cell-right');
-        addCell(formatMoney(g.prize), 'cell-right');
-
-        const profitCell = document.createElement('div');
-        profitCell.className = 'cell-right';
-        const profitSpan = document.createElement('span');
-        profitSpan.className = profitSpanClass;
-        profitSpan.textContent = profitText;
-        profitCell.appendChild(profitSpan);
-        row.appendChild(profitCell);
-
-        const itmCell = document.createElement('div');
-        itmCell.className = 'cell-center';
-        const itmSpan = document.createElement('span');
-        itmSpan.className = itmClass;
-        itmSpan.textContent = itmText;
-        itmCell.appendChild(itmSpan);
-        row.appendChild(itmCell);
-
-        addCell(g.gameType || '-', 'cell-center');
-
-        const percCell = document.createElement('div');
-        percCell.className = 'cell-center';
-        const percSpan = document.createElement('span');
-        percSpan.className = 'badge-percentile';
-        percSpan.textContent = percText;
-        percCell.appendChild(percSpan);
-        row.appendChild(percCell);
-
-        addCell(g.players || '-', 'cell-center');
-        addCell(g.position || '-', 'cell-center');
-
-        const notesCell = document.createElement('div');
-        if (g.notes && g.notes.trim() !== '') {
-          notesCell.className = 'cell-notes';
-          notesCell.textContent = g.notes;
-          notesCell.title = 'Kattints a teljes megjegyzéshez';
-          notesCell.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openNoteViewer(g.notes);
-          });
-        } else {
-          notesCell.className = 'cell-notes cell-notes-empty';
-          notesCell.textContent = '-';
-        }
-        row.appendChild(notesCell);
-
-        // Action Column containing edit and delete buttons
-        const actionCell = document.createElement('div');
-        actionCell.className = 'cell-center';
-        
-        const editBtn = document.createElement('button');
-        editBtn.className = 'action-btn edit';
-        editBtn.textContent = '✏️';
-        editBtn.title = 'Szerkesztés';
-        editBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          setEditMode(g);
-        });
-
-        const delBtn = document.createElement('button');
-        delBtn.className = 'action-btn delete';
-        delBtn.textContent = '🗑️';
-        delBtn.title = 'Törlés';
-        delBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          deleteGameEntry(g.id);
-        });
-
-        actionCell.appendChild(editBtn);
-        actionCell.appendChild(delBtn);
-        row.appendChild(actionCell);
-
+      tableBody.innerHTML='';
+      state.games[state.room].slice().sort((a,b)=>{
+        const dc=(b.date||'').localeCompare(a.date||'');
+        return dc!==0?dc:(b.createdAt||'').localeCompare(a.createdAt||'');
+      }).forEach(g=>{
+        const row=document.createElement('div');
+        row.className='table-row';
+        const addCell=(text,cls)=>{ const d=document.createElement('div'); if(cls)d.className=cls; d.textContent=text; row.appendChild(d); return d; };
+        addCell(g.name||'-','');
+        addCell(g.date||'-','cell-center');
+        addCell(fmt$(g.totalCost),'cell-right');
+        addCell(fmt$(g.prize),'cell-right');
+        const pc=document.createElement('div'); pc.className='cell-right';
+        const ps=document.createElement('span');
+        ps.className=g.profit>0?'badge-profit-positive':g.profit<0?'badge-profit-negative':'badge-profit-even';
+        ps.textContent=g.profit>0?'+'+fmt$(g.profit):g.profit<0?fmt$(g.profit):'0.00';
+        pc.appendChild(ps); row.appendChild(pc);
+        const ic=document.createElement('div'); ic.className='cell-center';
+        const is=document.createElement('span'); is.className=g.itm?'badge-itm-yes':'badge-itm-no'; is.textContent=g.itm?'Pénzben':'Nem';
+        ic.appendChild(is); row.appendChild(ic);
+        addCell(g.gameType||'-','cell-center');
+        const perc=document.createElement('div'); perc.className='cell-center';
+        const ps2=document.createElement('span'); ps2.className='badge-percentile';
+        ps2.textContent=typeof g.percentile==='number'?fmtPct(g.percentile):'-';
+        perc.appendChild(ps2); row.appendChild(perc);
+        addCell(g.players||'-','cell-center');
+        addCell(g.position||'-','cell-center');
+        const nc=document.createElement('div');
+        if (g.notes?.trim()) {
+          nc.className='cell-notes'; nc.textContent=g.notes; nc.title='Kattints a teljes megjegyzéshez';
+          nc.addEventListener('click',e=>{ e.stopPropagation(); openNoteViewer(g.notes); });
+        } else { nc.className='cell-notes cell-notes-empty'; nc.textContent='-'; }
+        row.appendChild(nc);
+        const ac=document.createElement('div'); ac.className='cell-center';
+        const eb=document.createElement('button'); eb.className='action-btn edit'; eb.textContent='✏️'; eb.title='Szerkesztés';
+        eb.addEventListener('click',e=>{ e.stopPropagation(); setEditMode(g); });
+        const db=document.createElement('button'); db.className='action-btn delete'; db.textContent='🗑️'; db.title='Törlés';
+        db.addEventListener('click',e=>{ e.stopPropagation(); deleteGameEntry(g.id); });
+        ac.appendChild(eb); ac.appendChild(db); row.appendChild(ac);
         tableBody.appendChild(row);
       });
     }
 
-    const periodState = { mode: 'today', from: '', to: '' };
-
-    function periodRange() {
-      const today = new Date();
-      const todayStr = getLocalDateString(today);
-      if (periodState.mode === 'custom') {
-        return { from: periodState.from || '0000-01-01', to: periodState.to || '9999-12-31' };
-      }
-      if (periodState.mode === 'today') return { from: todayStr, to: todayStr };
-      const d = new Date(today);
-      if (periodState.mode === 'week') d.setDate(d.getDate() - 6);
-      else if (periodState.mode === 'month') d.setDate(d.getDate() - 29);
-      else if (periodState.mode === 'year') d.setDate(d.getDate() - 364);
-      return { from: getLocalDateString(d), to: todayStr };
-    }
-
-    function renderPeriodSummary() {
-      const { from, to } = periodRange();
-      const all = [...state.games['888'], ...state.games['gg']];
-      const filtered = all.filter(g => g.date && g.date >= from && g.date <= to);
-      const s = calcStats(filtered);
-      document.getElementById('period-range-label').textContent = from + ' → ' + to;
-      document.getElementById('period-games').textContent = s.games;
-      document.getElementById('period-profit').textContent = formatMoney(s.totalProfit) + ' $';
-      document.getElementById('period-roi').textContent = formatPercent(s.roi);
-      document.getElementById('period-itm').textContent = formatPercent(s.itmRate);
-      document.getElementById('period-cost').textContent = formatMoney(s.totalCost) + ' $';
-      document.getElementById('period-prize').textContent = formatMoney(s.totalPrize) + ' $';
-    }
-
-    function tourneyTypeKey(g) {
-      const room = g.room === 'gg' ? 'GG' : '888';
-      const gt = g.gameType || 'MTT';
-      const bi = Number(g.buyIn) || 0;
-      const nameRaw = (g.name || '').trim();
-      const nameKey = nameRaw.toLowerCase().replace(/\s+/g, ' ');
-      const biLabel = bi === 0 ? 'Freebuy' : '$' + formatMoney(bi);
-      const label = nameRaw ? (room + ' · ' + nameRaw + ' · ' + biLabel) : (room + ' · ' + gt + ' · ' + biLabel);
-      const key = nameKey ? (room + '|' + nameKey) : (room + '|' + gt + '|bi:' + bi.toFixed(2));
-      return { key, label, room, gt, bi };
-    }
-
-    function renderTourneyTypes() {
-      const all = [...state.games['888'], ...state.games['gg']];
-      const groups = {};
-      all.forEach(g => {
-        const t = tourneyTypeKey(g);
-        if (!groups[t.key]) groups[t.key] = { label: t.label, bi: t.bi, games: [] };
-        groups[t.key].games.push(g);
-      });
-      const arr = Object.values(groups).sort((a, b) => b.games.length - a.games.length || a.bi - b.bi);
-      const table = document.getElementById('tourney-type-table');
-      table.innerHTML = '<tr><th>Típus</th><th>Db</th><th>Profit</th><th>ROI</th><th>ITM%</th></tr>';
-      if (arr.length === 0) {
-        table.innerHTML += '<tr><td colspan="5" style="color:var(--muted);text-align:center;">Még nincs adat</td></tr>';
-        return;
-      }
-      arr.forEach(grp => {
-        const s = calcStats(grp.games);
-        const profitColor = s.totalProfit > 0 ? 'color:#22c55e;' : s.totalProfit < 0 ? 'color:#ef4444;' : '';
-        const tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + grp.label + '</td><td>' + s.games + '</td>'
-          + '<td style="' + profitColor + '">' + formatMoney(s.totalProfit) + ' $</td>'
-          + '<td>' + formatPercent(s.roi) + '</td>'
-          + '<td>' + formatPercent(s.itmRate) + '</td>';
-        table.appendChild(tr);
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('#period-summary-filter .period-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('#period-summary-filter .period-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          periodState.mode = btn.getAttribute('data-psum');
-          document.getElementById('period-custom-range').style.display = periodState.mode === 'custom' ? 'flex' : 'none';
-          renderPeriodSummary();
-          if (periodState.mode === 'custom') {
-            const fromEl = document.getElementById('period-from');
-            setTimeout(() => {
-              try { fromEl.focus(); } catch (e) {}
-              if (typeof fromEl.showPicker === 'function') {
-                try { fromEl.showPicker(); } catch (e) {}
-              }
-            }, 60);
-          }
-        });
-      });
-      const fromEl = document.getElementById('period-from');
-      const toEl = document.getElementById('period-to');
-      if (fromEl) fromEl.addEventListener('change', () => {
-        periodState.from = fromEl.value;
-        renderPeriodSummary();
-        setTimeout(() => {
-          try { toEl.focus(); } catch (e) {}
-          if (typeof toEl.showPicker === 'function') {
-            try { toEl.showPicker(); } catch (e) {}
-          }
-        }, 60);
-      });
-      if (toEl) toEl.addEventListener('change', () => {
-        periodState.to = toEl.value;
-        renderPeriodSummary();
-      });
-    });
-
-
     function render() {
-      const isSummary = state.view === 'summary';
-      const statsAll = calcStats([...state.games['888'], ...state.games['gg']]);
-      const statsRoom = calcStats(state.games[state.room]);
-      const sum888 = calcStats(state.games['888']);
-      const sumGg = calcStats(state.games['gg']);
-      const roomName = state.room === '888' ? '888poker' : 'GGPoker';
+      const isSummary  = state.view==='summary';
+      const isCharts   = state.view==='charts';
+      const isNewCharts= state.view==='new-charts';
+      const isRoom     = state.view==='888'||state.view==='gg';
+      const statsAll   = calcStats([...state.games['888'],...state.games['gg']]);
+      const statsRoom  = calcStats(state.games[state.room]);
+      const sum888     = calcStats(state.games['888']);
+      const sumGg      = calcStats(state.games['gg']);
+      const roomName   = state.room==='888'?'888poker':'GGPoker';
 
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      const activeTab = document.querySelector('.tab[data-tab="' + state.view + '"]');
-      if (activeTab) activeTab.classList.add('active');
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.querySelector('.tab[data-tab="'+state.view+'"]')?.classList.add('active');
 
-      const isCharts = state.view === 'charts';
-      const isNewCharts = state.view === 'new-charts';
-      const isRoom = state.view === '888' || state.view === 'gg';
-      roomLayout.classList.toggle('hidden', !isRoom);
-      summaryLayout.classList.toggle('hidden', !isSummary);
-      const chartsLayout = document.getElementById('charts-layout');
-      if (chartsLayout) {
-        chartsLayout.classList.remove('hidden');
-        chartsLayout.style.display = isCharts ? 'block' : 'none';
-      }
-      const newChartsLayout = document.getElementById('new-charts-layout');
-      if (newChartsLayout) {
-        newChartsLayout.classList.remove('hidden');
-        newChartsLayout.style.display = isNewCharts ? 'block' : 'none';
-      }
-      if (isCharts) requestAnimationFrame(() => renderCharts());
-      if (isNewCharts) requestAnimationFrame(() => renderNewCharts());
+      document.getElementById('room-layout').classList.toggle('hidden',!isRoom);
+      document.getElementById('summary-layout').classList.toggle('hidden',!isSummary);
+      const cl=document.getElementById('charts-layout');
+      if(cl){ cl.classList.remove('hidden'); cl.style.display=isCharts?'block':'none'; }
+      const nl=document.getElementById('new-charts-layout');
+      if(nl){ nl.classList.remove('hidden'); nl.style.display=isNewCharts?'block':'none'; }
 
-      const headerStats = document.querySelector('.header-stats');
-      if (headerStats) headerStats.style.display = (isCharts || isNewCharts) ? 'none' : '';
+      if (isCharts)    requestAnimationFrame(renderCharts);
+      if (isNewCharts) requestAnimationFrame(renderNewCharts);
+
+      document.querySelector('.header-stats').style.display=(isCharts||isNewCharts)?'none':'';
       updateQuickPresetOptions(state.room);
 
-      document.getElementById('header-label-1').textContent = isSummary ? 'Lejátszott versenyek összesen' : 'Lejátszott versenyek (' + (state.room === '888' ? '888' : 'GG') + ')';
-      document.getElementById('header-label-2').textContent = isSummary ? 'Összes profit' : 'Profit (' + (state.room === '888' ? '888' : 'GG') + ')';
-      document.getElementById('header-label-3').textContent = isSummary ? 'Összes ITM arány' : 'ITM arány (' + (state.room === '888' ? '888' : 'GG') + ')';
-      document.getElementById('header-total-games').textContent = isSummary ? statsAll.games : statsRoom.games;
-      document.getElementById('header-total-profit').textContent = formatMoney(isSummary ? statsAll.totalProfit : statsRoom.totalProfit);
-      document.getElementById('header-itm-rate').textContent = formatPercent(isSummary ? statsAll.itmRate : statsRoom.itmRate);
+      const pfx=isSummary?'összesen':'('+(state.room==='888'?'888':'GG')+')';
+      document.getElementById('header-label-1').textContent=isSummary?'Lejátszott versenyek összesen':'Lejátszott versenyek ('+pfx+')';
+      document.getElementById('header-label-2').textContent=isSummary?'Összes profit':'Profit ('+pfx+')';
+      document.getElementById('header-label-3').textContent=isSummary?'Összes ITM arány':'ITM arány ('+pfx+')';
+      document.getElementById('header-total-games').textContent=isSummary?statsAll.games:statsRoom.games;
+      document.getElementById('header-total-profit').textContent=fmt$(isSummary?statsAll.totalProfit:statsRoom.totalProfit);
+      document.getElementById('header-itm-rate').textContent=fmtPct(isSummary?statsAll.itmRate:statsRoom.itmRate);
 
-      roomText.textContent = roomName;
-      document.getElementById('summary-room-label').textContent = roomName;
-      roomLabel.classList.toggle('room-888', state.room === '888');
-      roomLabel.classList.toggle('room-gg', state.room === 'gg');
-      const gt = document.getElementById('gameType');
-      if (gt && !editId) gt.value = state.room === 'gg' ? 'SNG' : 'MTT';
+      const rl=document.getElementById('room-label');
+      document.getElementById('room-text').textContent=roomName;
+      document.getElementById('summary-room-label').textContent=roomName;
+      rl.classList.toggle('room-888',state.room==='888');
+      rl.classList.toggle('room-gg', state.room==='gg');
+      const gt=document.getElementById('gameType'); if(gt&&!editId) gt.value=state.room==='gg'?'SNG':'MTT';
 
       renderRoomTable();
 
-      document.getElementById('room-profit').textContent = formatMoney(statsRoom.totalProfit) + ' $';
-      document.getElementById('room-profit-nofree').textContent = formatMoney(statsRoom.paidProfit) + ' $';
-      document.getElementById('room-games').textContent = statsRoom.games;
-      document.getElementById('room-itm-rate').textContent = formatPercent(statsRoom.itmRate);
-      document.getElementById('room-cost').textContent = formatMoney(statsRoom.totalCost) + ' $';
-      document.getElementById('room-prize').textContent = formatMoney(statsRoom.totalPrize) + ' $';
-      document.getElementById('room-itm-count').textContent = statsRoom.itmCount + 'x';
-      document.getElementById('room-roi-chip').textContent = 'ROI: ' + formatPercent(statsRoom.roi);
-      document.getElementById('room-avg-percentile-chip').textContent = 'Átlagos mezőny%: ' + (statsRoom.avgPercentile === null ? '-' : formatPercent(statsRoom.avgPercentile));
-      const balance = (state.baseBalances?.[state.room] ?? 0) + statsRoom.totalProfit;
-      const balEl = document.getElementById('room-balance');
-      if (balEl) {
-        balEl.textContent = formatMoney(balance) + ' $';
-        balEl.style.color = balance >= 0 ? '#22c55e' : '#ef4444';
-      }
+      document.getElementById('room-profit').textContent=fmt$(statsRoom.totalProfit)+' $';
+      document.getElementById('room-profit-nofree').textContent=fmt$(statsRoom.paidProfit)+' $';
+      document.getElementById('room-games').textContent=statsRoom.games;
+      document.getElementById('room-itm-rate').textContent=fmtPct(statsRoom.itmRate);
+      document.getElementById('room-cost').textContent=fmt$(statsRoom.totalCost)+' $';
+      document.getElementById('room-prize').textContent=fmt$(statsRoom.totalPrize)+' $';
+      document.getElementById('room-itm-count').textContent=statsRoom.itmCount+'x';
+      document.getElementById('room-roi-chip').textContent='ROI: '+fmtPct(statsRoom.roi);
+      document.getElementById('room-avg-percentile-chip').textContent='Átlagos mezőny%: '+(statsRoom.avgPercentile===null?'-':fmtPct(statsRoom.avgPercentile));
+      const balance=(state.baseBalances?.[state.room]??0)+statsRoom.totalProfit;
+      const balEl=document.getElementById('room-balance');
+      if(balEl){ balEl.textContent=fmt$(balance)+' $'; balEl.style.color=balance>=0?'#22c55e':'#ef4444'; }
 
-      document.getElementById('all-profit').textContent = formatMoney(statsAll.totalProfit) + ' $';
-      document.getElementById('all-profit-nofree').textContent = formatMoney(statsAll.paidProfit) + ' $';
-      document.getElementById('all-games').textContent = statsAll.games;
-      document.getElementById('all-itm-rate').textContent = formatPercent(statsAll.itmRate);
-      document.getElementById('all-cost').textContent = formatMoney(statsAll.totalCost) + ' $';
-      document.getElementById('all-prize').textContent = formatMoney(statsAll.totalPrize) + ' $';
-      document.getElementById('all-itm-count').textContent = statsAll.itmCount + 'x';
-      document.getElementById('all-roi-chip').textContent = 'ROI: ' + formatPercent(statsAll.roi);
-      document.getElementById('all-avg-percentile-chip').textContent = 'Átlag mezőny%: ' + (statsAll.avgPercentile === null ? '-' : formatPercent(statsAll.avgPercentile));
+      document.getElementById('all-profit').textContent=fmt$(statsAll.totalProfit)+' $';
+      document.getElementById('all-profit-nofree').textContent=fmt$(statsAll.paidProfit)+' $';
+      document.getElementById('all-games').textContent=statsAll.games;
+      document.getElementById('all-itm-rate').textContent=fmtPct(statsAll.itmRate);
+      document.getElementById('all-cost').textContent=fmt$(statsAll.totalCost)+' $';
+      document.getElementById('all-prize').textContent=fmt$(statsAll.totalPrize)+' $';
+      document.getElementById('all-itm-count').textContent=statsAll.itmCount+'x';
+      document.getElementById('all-roi-chip').textContent='ROI: '+fmtPct(statsAll.roi);
+      document.getElementById('all-avg-percentile-chip').textContent='Átlag mezőny%: '+(statsAll.avgPercentile===null?'-':fmtPct(statsAll.avgPercentile));
 
-      document.getElementById('sum-888-games').textContent = sum888.games;
-      document.getElementById('sum-888-profit').textContent = formatMoney(sum888.totalProfit) + ' $';
-      document.getElementById('sum-888-profit-nofree').textContent = formatMoney(sum888.paidProfit) + ' $';
-      document.getElementById('sum-888-roi').textContent = formatPercent(sum888.roi);
-      document.getElementById('sum-888-itm').textContent = formatPercent(sum888.itmRate);
-      document.getElementById('sum-888-itm-count').textContent = sum888.itmCount + 'x';
-      document.getElementById('sum-888-cost').textContent = formatMoney(sum888.totalCost) + ' $';
-      document.getElementById('sum-888-prize').textContent = formatMoney(sum888.totalPrize) + ' $';
-      document.getElementById('sum-888-avg-percentile').textContent = sum888.avgPercentile === null ? '-' : formatPercent(sum888.avgPercentile);
-
-      document.getElementById('sum-gg-games').textContent = sumGg.games;
-      document.getElementById('sum-gg-profit').textContent = formatMoney(sumGg.totalProfit) + ' $';
-      document.getElementById('sum-gg-profit-nofree').textContent = formatMoney(sumGg.paidProfit) + ' $';
-      document.getElementById('sum-gg-roi').textContent = formatPercent(sumGg.roi);
-      document.getElementById('sum-gg-itm').textContent = formatPercent(sumGg.itmRate);
-      document.getElementById('sum-gg-itm-count').textContent = sumGg.itmCount + 'x';
-      document.getElementById('sum-gg-cost').textContent = formatMoney(sumGg.totalCost) + ' $';
-      document.getElementById('sum-gg-prize').textContent = formatMoney(sumGg.totalPrize) + ' $';
-      document.getElementById('sum-gg-avg-percentile').textContent = sumGg.avgPercentile === null ? '-' : formatPercent(sumGg.avgPercentile);
-
-      document.getElementById('sum-all-games').textContent = statsAll.games;
-      document.getElementById('sum-all-profit').textContent = formatMoney(statsAll.totalProfit) + ' $';
-      document.getElementById('sum-all-profit-nofree').textContent = formatMoney(statsAll.paidProfit) + ' $';
-      document.getElementById('sum-all-roi').textContent = formatPercent(statsAll.roi);
-      document.getElementById('sum-all-itm').textContent = formatPercent(statsAll.itmRate);
-      document.getElementById('sum-all-itm-count').textContent = statsAll.itmCount + 'x';
-      document.getElementById('sum-all-cost').textContent = formatMoney(statsAll.totalCost) + ' $';
-      document.getElementById('sum-all-prize').textContent = formatMoney(statsAll.totalPrize) + ' $';
-      document.getElementById('sum-all-avg-percentile').textContent = statsAll.avgPercentile === null ? '-' : formatPercent(statsAll.avgPercentile);
+      const setSum=(pfx,s)=>{
+        document.getElementById('sum-'+pfx+'-games').textContent=s.games;
+        document.getElementById('sum-'+pfx+'-profit').textContent=fmt$(s.totalProfit)+' $';
+        document.getElementById('sum-'+pfx+'-profit-nofree').textContent=fmt$(s.paidProfit)+' $';
+        document.getElementById('sum-'+pfx+'-roi').textContent=fmtPct(s.roi);
+        document.getElementById('sum-'+pfx+'-itm').textContent=fmtPct(s.itmRate);
+        document.getElementById('sum-'+pfx+'-itm-count').textContent=s.itmCount+'x';
+        document.getElementById('sum-'+pfx+'-cost').textContent=fmt$(s.totalCost)+' $';
+        document.getElementById('sum-'+pfx+'-prize').textContent=fmt$(s.totalPrize)+' $';
+        document.getElementById('sum-'+pfx+'-avg-percentile').textContent=s.avgPercentile===null?'-':fmtPct(s.avgPercentile);
+      };
+      setSum('888',sum888); setSum('gg',sumGg); setSum('all',statsAll);
 
       renderPeriodSummary();
       renderTourneyTypes();
-
-      applySparkline(document.getElementById('sparkline-room'), document.getElementById('sparkline-room-needle'), document.getElementById('sparkline-room-text'), statsRoom, 'ebben a teremben');
-      applySparkline(document.getElementById('sparkline-all'), document.getElementById('sparkline-all-needle'), document.getElementById('sparkline-all-text'), statsAll, 'összesen');
+      applySparkline(document.getElementById('sparkline-room-needle'),document.getElementById('sparkline-room-text'),statsRoom,'ebben a teremben');
+      applySparkline(document.getElementById('sparkline-all-needle'),document.getElementById('sparkline-all-text'),statsAll,'összesen');
     }
 
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        const t = tab.getAttribute('data-tab');
-        state.view = t;
-        if (t === '888' || t === 'gg') {
-          state.room = t;
-          const gt = document.getElementById('gameType');
-          if (gt && !editId) gt.value = t === 'gg' ? 'SNG' : 'MTT';
-        }
-        saveState(state);
-        render();
-      });
-    });
-
-    document.getElementById('import-json-input').addEventListener('change', (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        try {
-          const parsed = JSON.parse(ev.target.result);
-          if (!parsed || !parsed.games) throw new Error('Hibás JSON szerkezet');
-          function doImport(replace) {
-            if (replace) {
-              state = {
-                room: parsed.room || '888',
-                view: parsed.view || '888',
-                games: {
-                  '888': Array.isArray(parsed.games['888']) ? parsed.games['888'] : [],
-                  'gg':  Array.isArray(parsed.games['gg'])  ? parsed.games['gg']  : [],
-                },
-                baseBalances: parsed.baseBalances || null,
-              };
-            } else {
-              const ids = new Set([
-                ...state.games['888'].map(x => x.id),
-                ...state.games['gg'].map(x => x.id),
-              ]);
-              ['888','gg'].forEach(r => {
-                (parsed.games[r] || []).forEach(g => {
-                  if (!ids.has(g.id)) state.games[r].push(g);
-                });
-              });
-            }
-            if (!state.baseBalances) {
-              const p888 = state.games['888'].reduce((s,g)=>s+(Number(g.profit)||0),0);
-              const pgg  = state.games['gg'].reduce((s,g)=>s+(Number(g.profit)||0),0);
-              state.baseBalances = {
-                '888': +(DEFAULT_BALANCE['888'] - p888).toFixed(2),
-                'gg':  +(DEFAULT_BALANCE['gg']  - pgg).toFixed(2),
-              };
-            }
-            saveState(state); render();
-            iosAlert('Sikeres betöltés!', 'Kész');
-          }
-          iosModal({ title: 'Adatok betöltése', message: 'Lecseréled a meglévő adatokat, vagy egyesíted az újakkal?', buttons: [
-            { label: 'Mégse', style: 'cancel', action: () => {} },
-            { label: 'Egyesítés', style: 'confirm', action: () => doImport(false) },
-            { label: 'Lecserélés', style: 'confirm danger', action: () => doImport(true) },
-          ]});
-        } catch (err) {
-          iosAlert('Hiba a JSON betöltésekor: ' + err.message, 'Hiba');
-        } finally {
-          e.target.value = '';
-        }
-      };
-      reader.readAsText(file);
-    });
-
-    document.getElementById('tournament-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      document.getElementById('form-error').textContent = '';
-      const data = Object.fromEntries(new FormData(e.target).entries());
-      if (!data.players || !data.position) {
-        document.getElementById('form-error').textContent = 'Kötelező a résztvevők száma és a saját helyezés.';
-        return;
-      }
-      if (editId) {
-        const idx = state.games[state.room].findIndex(x => x.id === editId);
-        if (idx !== -1) {
-          const original = state.games[state.room][idx];
-          const updated = createGameEntry(state.room, data);
-          updated.id = original.id;
-          updated.createdAt = original.createdAt;
-          state.games[state.room][idx] = updated;
-          saveState(state);
-          clearEditMode();
-          render();
-          return;
-        }
-      }
-      state.games[state.room].push(createGameEntry(state.room, data));
-      saveState(state);
-      clearEditMode();
-      render();
-    });
-
-    document.getElementById('btn-export-json').addEventListener('click', () => {
-      const dataStr = JSON.stringify(state, null, 2);
-      const blob = new Blob([dataStr], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'poker-tracker-backup.json';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    });
-
-    document.getElementById('btn-download-app').addEventListener('click', () => {
-      const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-      const blob = new Blob([html], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'ptracker.html';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    });
-
-    document.getElementById('btn-cancel-edit').addEventListener('click', clearEditMode);
-
+    // ── Event listeners ────────────────────────────────────────────────────────
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.period-btn[data-period]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.period-btn[data-period]').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          activePeriod = btn.getAttribute('data-period');
-          if (state.view === 'charts') renderCharts();
+      // quick preset
+      document.getElementById('quick-preset')?.addEventListener('change', e=>{
+        const p=PRESETS[e.target.value]; if(!p){return;}
+        document.getElementById('name').value=p.name;
+        document.getElementById('buyIn').value=p.buyIn;
+        document.getElementById('players').value=p.players;
+        document.getElementById('gameType').value=p.gameType;
+        document.getElementById('rebuys').value='0';
+        document.getElementById('addon').value='0';
+        e.target.value='';
+        document.getElementById('position')?.focus();
+      });
+
+      // tabs
+      document.querySelectorAll('.tab').forEach(tab=>{
+        tab.addEventListener('click',()=>{
+          const t=tab.getAttribute('data-tab');
+          state.view=t;
+          if(t==='888'||t==='gg'){ state.room=t; const gt=document.getElementById('gameType'); if(gt&&!editId) gt.value=t==='gg'?'SNG':'MTT'; }
+          saveState(state); render();
         });
       });
-      document.querySelectorAll('.period-btn[data-nperiod]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.period-btn[data-nperiod]').forEach(b => b.classList.remove('active'));
+
+      // period summary
+      document.querySelectorAll('#period-summary-filter .period-btn').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          document.querySelectorAll('#period-summary-filter .period-btn').forEach(b=>b.classList.remove('active'));
           btn.classList.add('active');
-          newChartsPeriod = btn.getAttribute('data-nperiod');
-          if (state.view === 'new-charts') renderNewCharts();
-        });
-      });
-      ['cc-metric','cc-group','cc-room','cc-type','cc-from','cc-to'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.addEventListener('change', () => { if (state.view === 'new-charts') renderCustomChart(); });
-      });
-      const editBalBtn = document.getElementById('btn-edit-balance');
-      if (editBalBtn) editBalBtn.addEventListener('click', () => {
-        const statsRoom = calcStats(state.games[state.room]);
-        const current = (state.baseBalances?.[state.room] ?? 0) + statsRoom.totalProfit;
-        iosPrompt(
-          'Jelenlegi egyenleg (' + (state.room === '888' ? '888poker' : 'GGPoker') + '):',
-          current.toFixed(2),
-          (inputVal) => {
-            const v = parseFloat(inputVal.replace(',', '.'));
-            if (isNaN(v)) { iosAlert('Érvénytelen szám', 'Hiba'); return; }
-            if (!state.baseBalances) state.baseBalances = { '888': 0, 'gg': 0 };
-            state.baseBalances[state.room] = +(v - statsRoom.totalProfit).toFixed(2);
-            saveState(state);
-            render();
-          },
-          'Egyenleg szerkesztése'
-        );
-      });
-      window.addEventListener('resize', () => {
-        if (state.view === 'charts') renderCharts();
-        if (state.view === 'new-charts') renderNewCharts();
-      });
-      document.querySelectorAll('.table-wrapper').forEach(wrap => {
-        wrap.addEventListener('wheel', e => {
-          const canScrollX = wrap.scrollWidth > wrap.clientWidth;
-          if (!canScrollX) return;
-          if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-            wrap.scrollLeft += e.deltaY;
-            e.preventDefault();
+          periodState.mode=btn.getAttribute('data-psum');
+          document.getElementById('period-custom-range').style.display=periodState.mode==='custom'?'flex':'none';
+          renderPeriodSummary();
+          if(periodState.mode==='custom'){
+            const fromEl=document.getElementById('period-from');
+            setTimeout(()=>{ try{fromEl.focus();}catch(e){} if(typeof fromEl.showPicker==='function') try{fromEl.showPicker();}catch(e){} },60);
           }
-        }, { passive: false });
+        });
+      });
+      const fromEl=document.getElementById('period-from'), toEl=document.getElementById('period-to');
+      fromEl?.addEventListener('change',()=>{ periodState.from=fromEl.value; renderPeriodSummary(); setTimeout(()=>{ try{toEl.focus();}catch(e){} if(typeof toEl.showPicker==='function') try{toEl.showPicker();}catch(e){} },60); });
+      toEl?.addEventListener('change',()=>{ periodState.to=toEl.value; renderPeriodSummary(); });
+
+      // chart period buttons
+      document.querySelectorAll('.period-btn[data-period]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          document.querySelectorAll('.period-btn[data-period]').forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          activePeriod=btn.getAttribute('data-period');
+          if(state.view==='charts') renderCharts();
+        });
+      });
+
+      // new charts period buttons
+      document.querySelectorAll('.period-btn[data-nperiod]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          document.querySelectorAll('.period-btn[data-nperiod]').forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          newChartsPeriod=btn.getAttribute('data-nperiod');
+          if(state.view==='new-charts') renderNewCharts();
+        });
+      });
+
+      // custom chart controls
+      ['cc-metric','cc-group','cc-room','cc-type','cc-from','cc-to'].forEach(id=>{
+        document.getElementById(id)?.addEventListener('change',()=>{ if(state.view==='new-charts') renderCustomChart(); });
+      });
+
+      // balance edit
+      document.getElementById('btn-edit-balance')?.addEventListener('click',()=>{
+        const sr=calcStats(state.games[state.room]);
+        const current=((state.baseBalances?.[state.room]??0)+sr.totalProfit).toFixed(2);
+        iosPrompt('Jelenlegi egyenleg ('+(state.room==='888'?'888poker':'GGPoker')+'):', current, val=>{
+          const v=parseFloat(val.replace(',','.'));
+          if(isNaN(v)){ iosAlert('Érvénytelen szám','Hiba'); return; }
+          if(!state.baseBalances) state.baseBalances={'888':0,'gg':0};
+          state.baseBalances[state.room]=+(v-sr.totalProfit).toFixed(2);
+          saveState(state); render();
+        },'Egyenleg szerkesztése');
+      });
+
+      // cancel edit
+      document.getElementById('btn-cancel-edit').addEventListener('click', clearEditMode);
+
+      // form submit
+      document.getElementById('tournament-form').addEventListener('submit', e=>{
+        e.preventDefault();
+        document.getElementById('form-error').textContent='';
+        const data=Object.fromEntries(new FormData(e.target).entries());
+        if(!data.players||!data.position){ document.getElementById('form-error').textContent='Kötelező a résztvevők száma és a saját helyezés.'; return; }
+        if(editId){
+          const idx=state.games[state.room].findIndex(x=>x.id===editId);
+          if(idx!==-1){ const orig=state.games[state.room][idx]; const upd=createGameEntry(state.room,data); upd.id=orig.id; upd.createdAt=orig.createdAt; state.games[state.room][idx]=upd; saveState(state); clearEditMode(); render(); return; }
+        }
+        state.games[state.room].push(createGameEntry(state.room,data));
+        saveState(state); clearEditMode(); render();
+      });
+
+      // export JSON
+      document.getElementById('btn-export-json').addEventListener('click',()=>{
+        const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+        const url=URL.createObjectURL(blob), a=document.createElement('a');
+        a.href=url; a.download='poker-tracker-backup.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      });
+
+      // import JSON
+      document.getElementById('import-json-input').addEventListener('change',e=>{
+        const file=e.target.files?.[0]; if(!file) return;
+        const reader=new FileReader();
+        reader.onload=ev=>{
+          try {
+            const parsed=JSON.parse(ev.target.result);
+            if(!parsed?.games) throw new Error('Hibás JSON szerkezet');
+            function doImport(replace) {
+              if(replace){
+                state={ room:parsed.room||'888', view:parsed.view||'888',
+                  games:{'888':Array.isArray(parsed.games['888'])?parsed.games['888']:[],'gg':Array.isArray(parsed.games['gg'])?parsed.games['gg']:[]},
+                  baseBalances:parsed.baseBalances||null };
+              } else {
+                const ids=new Set([...state.games['888'].map(x=>x.id),...state.games['gg'].map(x=>x.id)]);
+                ['888','gg'].forEach(r=>{ (parsed.games[r]||[]).forEach(g=>{ if(!ids.has(g.id)) state.games[r].push(g); }); });
+              }
+              if(!state.baseBalances) state.baseBalances=computeBaseBalances(state.games);
+              saveState(state); render(); iosAlert('Sikeres betöltés!','Kész');
+            }
+            iosModal({title:'Adatok betöltése',message:'Lecseréled a meglévő adatokat, vagy egyesíted az újakkal?',buttons:[
+              {label:'Mégse',style:'cancel',action:()=>{}},
+              {label:'Egyesítés',style:'confirm',action:()=>doImport(false)},
+              {label:'Lecserélés',style:'confirm danger',action:()=>doImport(true)},
+            ]});
+          } catch(err){ iosAlert('Hiba a JSON betöltésekor: '+err.message,'Hiba'); }
+          finally{ e.target.value=''; }
+        };
+        reader.readAsText(file);
+      });
+
+      // download app
+      document.getElementById('btn-download-app').addEventListener('click',()=>{
+        const blob=new Blob(['<!DOCTYPE html>\n'+document.documentElement.outerHTML],{type:'text/html'});
+        const url=URL.createObjectURL(blob), a=document.createElement('a');
+        a.href=url; a.download='ptracker.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      });
+
+      // resize
+      window.addEventListener('resize',()=>{
+        if(state.view==='charts')     renderCharts();
+        if(state.view==='new-charts') renderNewCharts();
+      });
+
+      // horizontal scroll on table with vertical wheel
+      document.querySelectorAll('.table-wrapper').forEach(wrap=>{
+        wrap.addEventListener('wheel',e=>{
+          if(wrap.scrollWidth>wrap.clientWidth&&Math.abs(e.deltaY)>Math.abs(e.deltaX)){ wrap.scrollLeft+=e.deltaY; e.preventDefault(); }
+        },{passive:false});
       });
     });
 
-    function getLocalDateString(date = new Date()) {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`;
-    }
-
-    function setTodayDate() {
-      const d = document.getElementById('date');
-      if (d) d.value = getLocalDateString();
-    }
-    setTodayDate();
+    // Set today's date and render
+    const dateEl=document.getElementById('date'); if(dateEl) dateEl.value=getLocalDateString();
     render();
   </script>
 </body></html>
