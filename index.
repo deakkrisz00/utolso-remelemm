@@ -599,13 +599,14 @@
       'freeroll-zilnic-888':{ label:'Freeroll Zilnic (888) – $0', name:'Freeroll Zilnic',   buyIn:'0',    players:'',  gameType:'MTT' },
       'sng010-3max':        { label:'SNG $0.10 – 3-max',          name:'SNG $0.10 – 3-max', buyIn:'0.10', players:'3', gameType:'SNG' },
       'sng025-3max':        { label:'SNG $0.25 – 3-max',          name:'SNG $0.25 – 3-max', buyIn:'0.25', players:'3', gameType:'SNG' },
+        'sng050-3max':        { label:'SNG $0.50 – 3-max',          name:'SNG $0.50 – 3-max', buyIn:'0.50', players:'3', gameType:'SNG' },
       'sng025-6max':        { label:'SNG $0.25 – 6-max',          name:'SNG $0.25 – 6-max', buyIn:'0.25', players:'6', gameType:'SNG' },
       'sng1-3max':          { label:'SNG $1.00 – 3-max',          name:'SNG $1.00 – 3-max', buyIn:'1.00', players:'3', gameType:'SNG' },
       'sng1-6max':          { label:'SNG $1.00 – 6-max',          name:'SNG $1.00 – 6-max', buyIn:'1.00', players:'6', gameType:'SNG' },
       'mystery-freeroll-gg':{ label:'Mystery Freeroll (GG) – $0', name:'Mystery Freeroll',  buyIn:'0',    players:'18',gameType:'MTT' },
     };
     const ROOM_PRESET_KEYS = {
-      '888': ['sng010-3max','mtt-freebuy-888','freeroll-zilnic-888'],
+      '888': ['sng010-3max','sng050-3max','mtt-freebuy-888','freeroll-zilnic-888'],
       'gg':  ['sng025-3max','sng025-6max','sng1-3max','sng1-6max','mystery-freeroll-gg'],
     };
     function updateQuickPresetOptions(room) {
